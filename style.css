@@ -1,0 +1,99 @@
+/* ELEMENTO */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	background: white;
+}
+
+h1 {
+  font-family: 'Arial';
+  padding-top: 100px;
+  font-size: 70px;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;;
+  padding-top: 25px;
+  font-size: 25px;
+}
+
+/* ID */
+
+/* CLASES */
+.navbar {
+  background: #1a4d60;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 85px;
+  padding: 5px 10%;
+}
+
+.navbar .logo{
+  cursor: pointer;
+  margin-right: auto;
+}
+
+.navbar .logo img{
+  height: 65px;
+  width: auto;
+  transition: all 0.3s;
+}
+
+.navbar .logo img:hover{
+  transform: scale(1.2);
+}
+
+.navbar .nav-links{
+  list-style: none;
+}
+
+.navbar .nav-links li{
+  display: inline-block;
+  padding: 0 20px;    
+}
+
+.navbar .nav-links li:hover{
+  transform: scale(1.1);
+}
+
+.navbar .nav-links a{
+  font-size: 700;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar .nav-links li a:hover{
+  color: #54a4e4;
+}
+
+.navbar .btn button{
+  margin-left: 20px;
+  font-weight: 700;
+  color: black;
+  padding: 9px 25px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.navbar .btn button:hover{
+  color: #54a4e4;
+  transform: scale(1.1);
+}
+
+.seccion_reserva{
+  color: white;
+  background-image: url('image/bg_seccion_reserva.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
+  text-align: center;
+}
+
