@@ -1,4 +1,4 @@
-/* ELEMENTO */
+/* ESTILOS DEL DOCUMENTO */
 * {
 	margin: 0;
 	padding: 0;
@@ -10,21 +10,7 @@ body {
 	background: white;
 }
 
-h1 {
-  font-family: 'Arial';
-  padding-top: 100px;
-  font-size: 70px;
-}
-
-p {
-  font-family: 'Montserrat', sans-serif;;
-  padding-top: 25px;
-  font-size: 25px;
-}
-
-/* ID */
-
-/* CLASES */
+/* ESTILOS DEL NAVBAR */
 .navbar {
   background: #1a4d60;
   display: flex;
@@ -34,18 +20,18 @@ p {
   padding: 5px 10%;
 }
 
-.navbar .logo{
+.navbar .icon{
   cursor: pointer;
   margin-right: auto;
 }
 
-.navbar .logo img{
+.navbar .icon img{
   height: 65px;
   width: auto;
   transition: all 0.3s;
 }
 
-.navbar .logo img:hover{
+.navbar .icon img:hover{
   transform: scale(1.2);
 }
 
@@ -72,7 +58,7 @@ p {
   color: #54a4e4;
 }
 
-.navbar .btn button{
+.navbar .button button{
   margin-left: 20px;
   font-weight: 700;
   color: black;
@@ -81,19 +67,61 @@ p {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease 0s;
+  transition: all 0.2s ease 0s;
 }
 
-.navbar .btn button:hover{
+.navbar .button button:hover{
   color: #54a4e4;
   transform: scale(1.1);
 }
 
-.seccion_reserva{
+/* ESTILOS DE MAIN */
+.content{
   color: white;
-  background-image: url('image/bg_seccion_reserva.jpeg');
+  background-image: url('../image/bg_seccion_reserva.jpeg');
   background-size: cover;
   background-attachment: fixed;
   text-align: center;
 }
 
+.content_titulo {
+  font-family: 'Arial';
+  padding-top: 120px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 50px;
+}
+
+.content_text{
+  padding-top: 20px;
+  padding-bottom: 30px;
+  font-size: 25px;
+}
+
+.content_button {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.btn {
+  margin-left: 20px;
+  font-weight: 700;
+  color: black;
+  padding: 9px 25px;
+  background: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+}
+
+.btn:hover {
+  color: #54a4e4;
+  transform: scale(1.1);
+}
+
+/* ESTILOS DE SERVICES */
+/* ESTILOS DE CONTACT_US */
+/* ESTILOS DE LOGIN */
+/* ESTILOS DE RESERVE */
