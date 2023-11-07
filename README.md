@@ -16,6 +16,7 @@ El objetivo de este proyecto es la realizacion de un software el cual permita la
 | Osvaldo Olivares | 4, 5 |
 | Daniel Segovia | 3, 7 |
 
+
 - Asignaciones pendientes:
 1. Desarrollo de pagina main.
 2. Desarrollo de header no responsivo.
