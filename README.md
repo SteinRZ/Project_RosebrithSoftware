@@ -1,4 +1,4 @@
-# Project_RosebrithSoftware
+# RosebrithSoftware
 Integrantes del proyecto:
 1. Esdras Daniel Amaya Vela
 2. Alan Yahir Arratia Hernandez
