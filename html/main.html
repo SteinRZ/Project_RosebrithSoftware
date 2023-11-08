@@ -6,7 +6,9 @@
     <title>Rosebrith | Inicio</title>
     <link rel="icon" href="../image/main_icon.png">
     <link rel="stylesheet" href="../css/style_main.css">
+    <link rel="stylesheet" href="../css/style_image_card.css">
 </head>
+ <!-------NAVBAR------------->
 <body>
     <header class="navbar">
         <div class="icon">
@@ -35,18 +37,38 @@
             <a href="reserve.html"><button class="btn" id="btn_reserva">¡Reserva ahora!</button></a>
         </div>
     </div>
-
+    <!-------IMAGES------------->
     <div class="gallery" id="gallery">
         <div class="gallery_title"> 
-            <h3>Galeria de nuestros servicios</h3>
+            <h2>Nuestros Servicios</h2>
         </div>
-        <div class="gallery_image">
-            <img src="../image/img_pool_1.jpg" alt="Alberca" class="gallery_img">
-            <img src="../image/img_pool_2.jpg" alt="Alberca" class="gallery_img">
-            <img src="../image/img_eventhall_1.jpg" alt="Salon" class="gallery_img">
-            <img src="../image/img_eventhall_2.jpg" alt="Salon" class="gallery_img">
+        <div class="gallery_image">         
+                    <!-----CARD IMAGES TESTING POOL----------->  
+            <div class="card">
+                <img class="card__background" src="../image/img_pool_1.jpg" alt="Alberca">
+                <div class="card__content | flow">
+                <div class="card__content--container | flow">
+                    <h2 class="card__title">Alberca</h2>
+                    <p class="card__description">Pasa con nosotros un dia refrescante en nuestra gran Alberca.</p>
+                </div>
+                <a href="services.html"><button class="card__button">Reservar ahora</button></a href>
+                </div>
+            </div>
+            <!-------------LOUNGE----------->
+            <div class="card card2">
+                <img class="card__background" src="../image/img_eventhall_1.jpg" alt="Salon">
+                <div class="card__content | flow">
+                <div class="card__content--container | flow">
+                    <h2 class="card__title">Salon</h2>
+                    <p class="card__description">Pasa con nosotros tu evento más importante en nuestro gran Salon.</p>
+                </div>
+                <a href="services.html"><button class="card__button">Reservar ahora</button></a href>
+                </div>
+            </div>
+        <!--------------END TESTING CARDS---------------------->   
         </div>
     </div>
+    <!---------------END IMAGES-->
 
     <div class="services">
         <!--EN ESTA PARTE SE MUESTRA LOS SERVICIOS Y HORARIOS-->
