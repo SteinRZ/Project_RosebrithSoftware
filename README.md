@@ -6,30 +6,26 @@ Integrantes del proyecto:
 4. Daniel Segovia Espinoza
 
 Objetivo del proyecto:
-
 El objetivo de este proyecto es la realizacion de un software el cual permita la gestion de reservas y eventos de una alberca y salon llamada Rosebrith.
 
-| Integrante | Asignacion |
-|------------|-----------|
-| Esdras Amaya | 1, 2 |
-| Alan Arratia | 6 |
-| Osvaldo Olivares | 4, 5 |
-| Daniel Segovia | 3, 7 |
 
+ASIGNACIONES A REALIZAR:
 
-- Asignaciones pendientes:
-1. Desarrollo de pagina main.
-2. Desarrollo de header no responsivo.
-3. Desarrollo de pagina services.
-4. Desarrollo de pagina contact_us (REALIZAR FORMULARIO SOLAMENTE).
-5. Desarrollo de pagina login (REALIZAR FORMULARIO SOLAMENTE).
-6. Desarrollo de pagina reserve (REALIZAR FORMULARIO SOLAMENTE).
-7. Desarrollo de responsividad del header, main y services.
+| ASIGNACION | ESTATUS | INTEGRANTE ENCARGADO | COMENTARIOS |
+|------------|---------|----------------------|-------------|
+| header | COMPLETADO | Esdras Amaya | Header no responsivo |
+| main | PENDIENTE | Esdras Amaya, Osvaldo Olivares | Falta terminar la seccion de services |
+| services | PENDIENTE | Daniel Segovia | Creacion de pagina donde muestre los servicios ofrecidos. |
+| contact_us | PENDIENTE | Esdras Amaya | Creacion de formulario para el usuario. |
+| login | PENDIENTE | Osvaldo Olivares | Creacion de formulario para el usuario. |
+| reserve | PENDIENTE | Alan Yahir | Creacion de formulario para el usuario. |
+| Responsividad | PENDIENTE | Daniel Segovia, Alan Yahir | Creacion de responsividad en las paginas al cambiar el tamaño de la pantalla. |
+
 
 ASIGNACIONES PENDIENTES PARA DESPUES DE LA APROBACION DE LA BASE DE DATOS:
 
-8. Creacion de la base de datos en un sistema gestor (A FALTA DE APROBACION).
-9. Creacion de una pagina para la gestion de los eventos.
-10. Creacion de una pagina para la creacion de cuentas de tipo empleado.
-11. Conexion de la pagina web con la base de datos.
-12. Funcionabilidad del login (QUE DIFERENCIE SI EL LOGIN FUE DE CLIENTE O DE EMPLEADO).
+- Creacion de la base de datos en un sistema gestor (A FALTA DE APROBACION).
+- Creacion de una pagina para la gestion de los eventos.
+- Creacion de una pagina para la creacion de cuentas de tipo empleado.
+- Conexion de la pagina web con la base de datos.
+- Funcionabilidad del login (QUE DIFERENCIE SI EL LOGIN FUE DE CLIENTE O DE EMPLEADO).
