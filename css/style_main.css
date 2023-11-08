@@ -75,7 +75,7 @@ body {
   transform: scale(1.1);
 }
 
-/* ESTILOS DE MAIN */
+/* ESTILOS DE CONTENT */
 .content{
   color: white;
   background-image: url('../image/bg_seccion_reserva.jpeg');
@@ -127,6 +127,7 @@ body {
   transform: scale(1.1);
 }
 
+/* ESTILOS DE GALLERY */
 .gallery {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -151,6 +152,3 @@ body {
 }
 
 /* ESTILOS DE SERVICES */
-/* ESTILOS DE CONTACT_US */
-/* ESTILOS DE LOGIN */
-/* ESTILOS DE RESERVE */
