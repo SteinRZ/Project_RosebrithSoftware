@@ -3,11 +3,11 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-	background: white;
+	background: #FFFF;
+  font-family: 'Roboto';
 }
 
 /* ESTILOS DEL NAVBAR */
@@ -84,24 +84,30 @@ body {
   text-align: center;
 }
 
+.content_image{
+  padding-top: 50px;
+  padding-bottom: 80px;
+}
+
+.img{
+  width: 400px;
+  height: 400px;
+}
+
 .content_titulo {
-  font-family: 'Arial';
-  padding-top: 120px;
-  padding-bottom: 30px;
+  padding-bottom: 55px;
   padding-left: 30px;
   padding-right: 30px;
   font-size: 50px;
 }
 
 .content_text{
-  padding-top: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 55px;
   font-size: 25px;
 }
 
 .content_button {
-  padding-top: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 
 .btn {
@@ -119,6 +125,29 @@ body {
 .btn:hover {
   color: #54a4e4;
   transform: scale(1.1);
+}
+
+.gallery {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.gallery_title {
+  padding-bottom: 20px;
+}
+
+.gallery_image {
+  display: flex;
+  align-content: center;
+}
+
+.gallery_img {
+  width: 500px;
+  height: 300px;
+  margin: 0 5px;
+  border-radius: 10px;
 }
 
 /* ESTILOS DE SERVICES */
