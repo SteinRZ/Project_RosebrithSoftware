@@ -13,8 +13,8 @@ ASIGNACIONES A REALIZAR:   DANI SE LA COME
 
 | ASIGNACION | ESTATUS | INTEGRANTE ENCARGADO | COMENTARIOS |
 |------------|---------|----------------------|-------------|
-| header | COMPLETADO | Esdras Amaya | Header no responsivo |
-| main | PENDIENTE | Esdras Amaya, Osvaldo Olivares | COMPLETADO |
+| header | COMPLETADO | Esdras Amaya | COMPLETADO |
+| main | COMPLETADO | Esdras Amaya, Osvaldo Olivares | COMPLETADO |
 | services | PENDIENTE | Daniel Segovia | Creacion de pagina donde muestre los servicios ofrecidos. |
 | contact_us | PENDIENTE | Esdras Amaya | Creacion de formulario para el usuario. |
 | login | PENDIENTE | Osvaldo Olivares | Creacion de formulario para el usuario. |
