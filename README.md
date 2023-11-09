@@ -9,7 +9,7 @@ Objetivo del proyecto:
 El objetivo de este proyecto es la realizacion de un software el cual permita la gestion de reservas y eventos de una alberca y salon llamada Rosebrith.
 
 
-ASIGNACIONES A REALIZAR:   DANI SE LA COME
+ASIGNACIONES A REALIZAR:   OSVALDO SE LA COME ENTERA
 
 | ASIGNACION | ESTATUS | INTEGRANTE ENCARGADO | COMENTARIOS |
 |------------|---------|----------------------|-------------|
