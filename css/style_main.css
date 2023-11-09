@@ -76,7 +76,7 @@ body {
 }
 
 /* ESTILOS DE GALLERY */
-.gallery {
+.services {
   padding-top: 150px;
   padding-bottom: 100px;
   padding-left: 40px;
@@ -84,7 +84,7 @@ body {
   background-color: linear-gradient(0deg, #1b8dda, #1d3e55);
 }
 
-.gallery_title {
+.services_title {
   padding-bottom: 100px;
   display: flex;
   align-items: center;
@@ -97,7 +97,7 @@ body {
   text-align: center;
   line-height: 1;
 }
-.gallery_image {
+.services_image {
   display: flex;
   align-content: center;
 }
