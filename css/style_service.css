@@ -8,28 +8,69 @@
 body {
 	background: #FFFF;
   font-family: 'Roboto';
-
-  
+  background-image: url('../image/bg_seccion_reserva.jpeg');
+  background-size: cover; /* Hace que la imagen de fondo cubra todo el cuerpo */
+  background-attachment: fixed; /* Fija la imagen de fondo al visualizar el contenido */
+  margin: 0; /* Elimina los márgenes predeterminados del cuerpo */
+  padding: 0; /* Elimina el relleno predeterminado del cuerpo */
+  height: 100vh; /* Ajusta la altura del cuerpo al 100% de la ventana gráfica */
 }
 #contenedor1{
+	/* Agregamos posición relativa para que los elementos secundarios se posicionen en relación con este */
+	
+	background-color: rgba(0, 128, 128, 0.5); /* Turquesa con una opacidad del 50% */
+	background-size: cover;
+	background-attachment: fixed;
 	margin: 0;
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	height: 80vh;
+	height: 43vh;
 	overflow: hidden;
 	padding-left: 5%;
+	padding-bottom: 2%;
 	
 }
+#contenedor2{
+	/* Agregamos posición relativa para que los elementos secundarios se posicionen en relación con este */
+	
+	background-color: rgba(0, 128, 128, 0.5); /* Turquesa con una opacidad del 50% */
+	background-size: cover;
+	background-attachment: fixed;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	overflow: hidden;
+	height: 43vh;
+	padding-left: 5%;
+	padding-bottom: 2%;
+}
+
 
 #carousel-container {
-	width: 80%;
-	max-width: 600px;
+	width: 400px;
+	height: 200px;
+	/*max-width: 600px;*/
 	margin: 10px;
 	overflow: hidden;
+	z-index: 1;
+}
+#carousel-container2{
+	width: 400px;
+	height: 200px;
+	/*max-width: 600px;*/
+	margin: 10px;
+	overflow: hidden;
+	z-index: 1;
 }
 
 #carousel {
+	display: flex;
+	width: 300%;
+	transition: transform 0.5s ease-in-out;
+}
+#carousel2 {
 	display: flex;
 	width: 300%;
 	transition: transform 0.5s ease-in-out;
