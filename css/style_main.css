@@ -1,6 +1,6 @@
 @media screen and (min-width: 480px){
 }
-/*FONT STYLES*/
+/* FONT STYLES */
 @font-face {
   font-family: "LeagueSpartanVariable";
   src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2101521/LeagueSpartanVariable.ttf");
@@ -27,14 +27,14 @@ body {
   text-align: center;
 }
 
-.content_image{
+.content__image{
   padding-top: 50px;
-  padding-bottom: 80px;
+  padding-bottom: 30px;
 }
 
 .img{
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
 }
 
 .img:hover {
@@ -42,23 +42,23 @@ body {
   transform: scale(1.1);
 }
 
-.content_titulo {
-  padding-bottom: 55px;
+.content__title {
+  padding-bottom: 20px;
   padding-left: 30px;
   padding-right: 30px;
   font-size: 50px;
 }
 
-.content_text{
-  padding-bottom: 55px;
+.content__text{
+  padding-bottom: 50px;
   font-size: 25px;
 }
 
-.content_button {
+.content__button {
   padding-bottom: 50px;
 }
 
-.btn {
+.content__button--button {
   margin-left: 20px;
   font-weight: 700;
   color: black;
@@ -70,7 +70,7 @@ body {
   transition: all 0.2s ease 0s;
 }
 
-.btn:hover {
+.content__button--button:hover {
   color: #54a4e4;
   transform: scale(1.1);
 }
