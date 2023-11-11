@@ -30,9 +30,10 @@ img {
 /* ------------------ESTILOS DEL FORM------------------ */
 /* Form */
 .form {
+	width: 50%;
+	float: left;
 	padding-top: 40px;
 	padding-left: 200px;
-	padding-right: 1000px;
 	padding-bottom: 10px;
 }
 
@@ -69,6 +70,7 @@ input[type=text]:focus {
 	margin: 4px;
 	border: 2px solid black;
 	border-radius: 5px;
+	font-family: 'Roboto';
 	resize: none;
 	transition: height 0.4s ease-in-out;
 }
@@ -94,4 +96,17 @@ input[type=text]:focus {
 .form__send--button:hover {
 	color: #54a4e4;
 	transform: scale(1.1);
+}
+
+/* ------------------ESTILOS DEL FORM------------------ */
+.information {
+	width: 50%;
+	float: left;
+	padding-top: 80px;
+	padding-left: 200px;
+	padding-right: 200px;
+}
+
+.information__contact--direct {
+	padding-bottom: 20px;
 }

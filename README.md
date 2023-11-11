@@ -31,12 +31,13 @@ Para mas entendimiento de las nomenclaturas, se puede usar de ejemplo el main o 
 Fase 1: Diseño de interfaz.
 | ASIGNACION | ESTATUS | INTEGRANTE ASIGNADO | COMENTARIOS |
 |------------|---------|----------------------|-------------|
-| header | COMPLETADO | Esdras Amaya | COMPLETADO |
+| header | COMPLETADO | Esdras Amaya | COMPLETADO. |
 | main | COMPLETADO | Esdras Amaya, Osvaldo Olivares | COMPLETADO. |
 | services | ATENDIENDO | Daniel Segovia | Creacion de pagina donde muestre los servicios ofrecidos. |
-| contact_us | ATENDIENDO | Esdras Amaya | Falta agregar la informacion del telefono del lugar, la direccion y el correo de contacto. |
+| contact_us | COMPLETADO | Esdras Amaya | COMPLETADO. |
 | login | PENDIENTE | Osvaldo Olivares | Creacion de formulario para el usuario. |
 | reserve | PENDIENTE | Alan Yahir | Creacion de formulario para el usuario. |
+| register | PENDIENTE | PENDIENTE | PENDIENTE |
 | Responsividad | PENDIENTE | Daniel Segovia, Alan Yahir | Creacion de responsividad en las paginas al cambiar el tamaño de la pantalla. |
 
 
