@@ -15,6 +15,22 @@ body {
   padding: 0; /* Elimina el relleno predeterminado del cuerpo */
   height: 100vh; /* Ajusta la altura del cuerpo al 100% de la ventana gráfica */
 }
+.content__title {
+	padding-bottom: 20px;
+	padding-left: 30px;
+	padding-right: 30px;
+	font-size: 50px;
+  }
+
+.content__text{
+	padding-bottom: 10px;
+	font-size: 25px;
+	color: white;
+	font-family: 'Roboto';
+	background-color: rgba(0, 128, 128, 0.5); /* Turquesa con una opacidad del 50% */
+	align-items: center;
+	text-align: center;
+  }
 #contenedor1{
 	/* Agregamos posición relativa para que los elementos secundarios se posicionen en relación con este */
 	
@@ -25,9 +41,9 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	height: 43vh;
+	height: 35vh;
 	overflow: hidden;
-	padding-left: 5%;
+	padding-left: 10%;
 	padding-bottom: 2%;
 	
 }
@@ -42,8 +58,8 @@ body {
 	align-items: center;
 	justify-content: left;
 	overflow: hidden;
-	height: 43vh;
-	padding-left: 5%;
+	height: 35vh;
+	padding-left: 10%;
 	padding-bottom: 2%;
 }
 
@@ -105,4 +121,12 @@ img {
 	color: #1a4d60;
 	cursor: pointer;
 	outline: none;
+}
+
+.transparent-bg {
+	
+	margin: 100px;
+    width: 400px; /* Ancho del div con fondo gris transparente */
+    height: 200px; /* Mismo alto que el carrusel */
+    background-color: rgba(128, 128, 128, 0.5); /* Gris con una opacidad del 50% */
 }
