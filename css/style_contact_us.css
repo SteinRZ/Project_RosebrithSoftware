@@ -1,4 +1,4 @@
-/* ESTILOS DEL DOCUMENTO */
+/* ------------------ESTILOS DEL DOCUMENTO------------------ */
 * {
 	margin: 0;
 	padding: 0;
@@ -7,5 +7,91 @@
 
 body {
 	background: #FFFF;
-  font-family: 'Roboto';
+	font-family: 'Roboto';
+}
+
+/* ------------------ESTILOS DEL BANNER------------------ */
+.banner {
+	background-image: url('../image/img_pool_3.jpg');
+  	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	height: 175px;
+	margin-top: 25px;
+	margin-left: 200px;
+	margin-right: 200px;
+	border-radius: 10px;
+}
+
+img {
+	max-width: 100%;
+  	height: auto;
+}
+
+/* ------------------ESTILOS DEL FORM------------------ */
+/* Form */
+.form {
+	padding-top: 40px;
+	padding-left: 200px;
+	padding-right: 1000px;
+	padding-bottom: 10px;
+}
+
+.form > div {
+	padding-bottom: 20px;
+}
+
+.form__message {
+	padding-bottom: 10px;
+}
+
+.form__send {
+	padding-top: 10px;
+	text-align: center;
+}
+
+/* Inputs */
+input[type=text]{
+	width: 100%;
+	height: 40px;
+	margin: 4px;
+  	padding: 12px 20px;
+	border-radius: 5px;
+	resize: none;
+}
+
+input[type=text]:focus {
+	border: 3px solid #54a4e4;
+}
+
+.form__message--input {
+	width: 100%;
+	height: 40px;
+	margin: 4px;
+	border: 2px solid black;
+	border-radius: 5px;
+	resize: none;
+	transition: height 0.4s ease-in-out;
+}
+
+.form__message--input:focus {
+	height: 150px;
+	border: 3px solid #54a4e4;
+}
+
+/* Boton */
+.form__send--button {
+	margin-left: 20px;
+	font-weight: 700;
+	color: black;
+	padding: 9px 25px;
+	background: white;
+	border: 1px solid #54a4e4;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+}
+  
+.form__send--button:hover {
+	color: #54a4e4;
+	transform: scale(1.1);
 }

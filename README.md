@@ -32,9 +32,9 @@ Fase 1: Diseño de interfaz.
 | ASIGNACION | ESTATUS | INTEGRANTE ASIGNADO | COMENTARIOS |
 |------------|---------|----------------------|-------------|
 | header | COMPLETADO | Esdras Amaya | COMPLETADO |
-| main | PENDIENTE | Esdras Amaya, Osvaldo Olivares | Cambio de nombre de clases en la parte de services |
-| services | PENDIENTE | Daniel Segovia | Creacion de pagina donde muestre los servicios ofrecidos. |
-| contact_us | PENDIENTE | Esdras Amaya | Creacion de formulario para el usuario. |
+| main | COMPLETADO | Esdras Amaya, Osvaldo Olivares | COMPLETADO. |
+| services | ATENDIENDO | Daniel Segovia | Creacion de pagina donde muestre los servicios ofrecidos. |
+| contact_us | ATENDIENDO | Esdras Amaya | Falta agregar la informacion del telefono del lugar, la direccion y el correo de contacto. |
 | login | PENDIENTE | Osvaldo Olivares | Creacion de formulario para el usuario. |
 | reserve | PENDIENTE | Alan Yahir | Creacion de formulario para el usuario. |
 | Responsividad | PENDIENTE | Daniel Segovia, Alan Yahir | Creacion de responsividad en las paginas al cambiar el tamaño de la pantalla. |
