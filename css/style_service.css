@@ -14,6 +14,7 @@ body {
   margin: 0; /* Elimina los márgenes predeterminados del cuerpo */
   padding: 0; /* Elimina el relleno predeterminado del cuerpo */
   height: 100vh; /* Ajusta la altura del cuerpo al 100% de la ventana gráfica */
+  min-height: 100vh;
 }
 .content__title {
 	padding-bottom: 20px;
@@ -41,7 +42,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	height: 42vh;
+	height: 35vh;
 	overflow: hidden;
 	padding-left: 10%;
 	padding-bottom: 2%;
@@ -58,9 +59,16 @@ body {
 	align-items: center;
 	justify-content: left;
 	overflow: hidden;
-	height: 35vh;
+	height: 40vh;
 	padding-left: 10%;
 	padding-bottom: 2%;
+	
+}
+
+#contenedor3{
+	padding-left: 600px;
+	padding-bottom: 40px;
+	position: absolute;
 }
 
 
@@ -111,6 +119,7 @@ img {
 	color: #1a4d60;
 	cursor: pointer;
 	outline: none;
+	z-index: 1;
 }
 
 #next {
@@ -121,6 +130,7 @@ img {
 	color: #1a4d60;
 	cursor: pointer;
 	outline: none;
+	z-index: 1;
 }
 
 .transparent-bg {
@@ -130,3 +140,170 @@ img {
     height: 200px; /* Mismo alto que el carrusel */
     background-color: rgba(128, 128, 128, 0.5); /* Gris con una opacidad del 50% */
 }
+
+.menu {
+	background-color: white;
+	overflow: hidden;
+	border-color: #1a4d60;
+	z-index: 100;
+	border-radius: 5px;
+	
+}
+
+.menu a {
+	width: 500px;
+	height: 50px;
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 20px 16px;
+	text-decoration: none;
+	cursor: pointer;
+	border: 1px solid #1a4d60;
+}
+
+.menu a:hover {
+	background-color: #1a4d60;
+}
+
+
+
+.content {
+	display: none;
+	padding: 20px;
+	height: 50px;
+	width: 500px;
+	
+}
+
+.content p{
+	font-size: 16px; /* Tamaño de fuente */
+    line-height: 1.5; /* Altura de línea para mejorar la legibilidad */
+    margin-bottom: 15px; /* Espaciado inferior entre párrafos */
+}
+
+.content h3,
+ .content p {
+            background-color: rgba(169, 169, 169, 0.5); /* Fondo gris semi-transparente */
+            padding: 10px;
+            border-radius: 5px; /* Bordes redondeados */
+        }
+
+		@media only screen and (max-width: 768px) {
+			/* Estilos específicos para pantallas más pequeñas */
+		
+			#contenedor1,
+			#contenedor2 {
+				/* Ajusta el estilo de los contenedores 1 y 2 para pantallas más pequeñas */
+				height: auto;
+				padding: 10px;
+				justify-content: center;
+			}
+		
+			#carousel-container,
+			#carousel-container2 {
+				/* Ajusta el estilo de los contenedores de carruseles para pantallas más pequeñas */
+				width: 80%; /* Cambiado para que se ajuste mejor a la pantalla */
+				margin: 10px auto; /* Centrado horizontalmente */
+			}
+		
+			#contenedor3 {
+				position:absolute;
+				padding-left: 10px;
+				padding-top: 900px; /* Ajusta la propiedad top para moverlo hacia abajo en pantallas más pequeñas */
+				
+			}
+		
+			.menu a {
+				/* Ajusta el estilo de los enlaces del menú para pantallas más pequeñas */
+				width: auto;
+				height: auto;
+				padding: 10px;
+				margin-bottom: 10px;
+			}
+		
+			.content {
+				/* Ajusta el estilo del contenido para pantallas más pequeñas */
+				width: 80%; /* Cambiado para que se ajuste mejor a la pantalla */
+				margin: 0 auto; /* Centrado horizontalmente */
+			}
+
+			.navbar {
+				flex-direction: column;
+				height: auto;
+				padding: 10px;
+				z-index: 1000;
+				align-items: center;
+				text-align: center;
+				align-content: center;
+			}
+		
+			.navbar .navbar__icon {
+				margin-right: 0;
+				margin-bottom: 10px;
+				z-index: 1000;
+			}
+		
+			.navbar .nav__links {
+				flex-direction: column;
+				align-items: flex-end;
+				z-index: 1000;
+			}
+		
+			.navbar .nav__links li {
+				display: block;
+				padding: 10px 0;
+				z-index: 1000;
+			}
+		
+			.navbar .nav__links a {
+				font-size: 16px; /* Ajusta el tamaño de fuente según sea necesario */
+				color: white;
+				text-decoration: none;
+				transition: color 0.3s ease-in-out; /* Agregado efecto de transición para el color */
+				z-index: 100;
+			}
+
+
+			nav{
+				z-index: 100;
+			}
+		
+		
+			.navbar .nav__links li:hover a {
+				color: #54a4e4;
+				z-index: 1000;
+			}
+		
+			.navbar .navbar__button {
+				margin-left: 0;
+				margin-top: 10px;
+				z-index: 1000;
+				
+			}
+
+			.nav__links ul {
+				z-index: 1000;
+			}
+		
+			.navbar .navbar__button button {
+				font-weight: 700;
+				color: black;
+				padding: 9px 15px; /* Ajusta el relleno según sea necesario */
+				background: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				transition: all 0.2s ease 0s;
+				z-index: 1000;
+			}
+		
+			.navbar .navbar__button button:hover {
+				color: #54a4e4;
+				transform: scale(1.1);
+				z-index: 1000;
+			}
+			
+			
+		}
+		
