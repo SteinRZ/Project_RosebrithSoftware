@@ -16,7 +16,11 @@ formularioRegistro.addEventListener("submit", function(event) {
 
   const valido = validarContraseñas(pswd, confirmpswd);
 
-  if (!valido) {
+  if (valido) {
+    // Submit the form or perform other actions
+    alert("Registro exitoso");
+    document.registro.reset(); // Clear the form fields
+  } else {
     alert("Las contraseñas no coinciden");
   }
 });
