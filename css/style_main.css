@@ -420,3 +420,80 @@ body {
   animation-duration: 25s;
   opacity: 0.3;
 }
+@media only screen and (max-width: 768px) {
+	/* responsividad navbar */
+	.navbar {
+	  flex-direction: column;
+	  height: auto;
+	  padding: 10px;
+	  z-index: 1000;
+	  align-items: center;
+	  text-align: center;
+	  align-content: center;
+	}
+  
+	.navbar .navbar__icon {
+	  margin-right: 0;
+	  margin-bottom: 10px;
+	  z-index: 1000;
+	}
+  
+	.navbar .nav__links {
+	  flex-direction: column;
+	  align-items: flex-end;
+	  z-index: 1000;
+	}
+  
+	.navbar .nav__links li {
+	  display: block;
+	  padding: 10px 0;
+	  z-index: 1000;
+	}
+  
+	.navbar .nav__links a {
+	  font-size: 16px; /* Ajusta el tamaño de fuente según sea necesario */
+	  color: white;
+	  text-decoration: none;
+	  transition: color 0.3s ease-in-out; /* Agregado efecto de transición para el color */
+	  z-index: 100;
+	}
+  
+	nav{
+	  z-index: 100;
+	}
+  
+  
+	.navbar .nav__links li:hover a {
+	  color: #54a4e4;
+	  z-index: 1000;
+	}
+  
+	.navbar .navbar__button {
+	  margin-left: 0;
+	  margin-top: 10px;
+	  z-index: 1000;
+	  
+	}
+  
+	.nav__links ul {
+	  z-index: 1000;
+	}
+  
+	.navbar .navbar__button button {
+	  font-weight: 700;
+	  color: black;
+	  padding: 9px 15px; /* Ajusta el relleno según sea necesario */
+	  background: white;
+	  border: none;
+	  border-radius: 5px;
+	  cursor: pointer;
+	  transition: all 0.2s ease 0s;
+	  z-index: 1000;
+	}
+  
+	.navbar .navbar__button button:hover {
+	  color: #54a4e4;
+	  transform: scale(1.1);
+	  z-index: 1000;
+	}
+  }
