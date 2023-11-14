@@ -35,20 +35,26 @@ Fase 1: Diseño de interfaz.
 | main | COMPLETADO | Esdras Amaya, Osvaldo Olivares | COMPLETADO. |
 | services | ATENDIENDO | Daniel Segovia | Creacion de pagina donde muestre los servicios ofrecidos. |
 | contact_us | COMPLETADO | Esdras Amaya | COMPLETADO. |
-| login | PENDIENTE | Osvaldo Olivares | Creacion de formulario para el usuario. |
-| reserve | PENDIENTE | Alan Yahir | Creacion de formulario para el usuario. |
-| register | PENDIENTE | PENDIENTE | PENDIENTE |
+| login | COMPLETADO | Osvaldo Olivares | COMPLETADO. |
+| reserve | COMPLETADO | Alan Yahir | COMPLETADO. |
 | Responsividad | PENDIENTE | Daniel Segovia, Alan Yahir | Creacion de responsividad en las paginas al cambiar el tamaño de la pantalla. |
 
 
-
 Fase 2: Diseño de base de datos e implementacion a software.
-1. Creacion de la base de datos en un sistema gestor.
-2. Creacion de una pagina para la gestion de los eventos.
-3. Creacion de una pagina para la creacion de cuentas de tipo empleado.
-4. Conexion de la pagina web con la base de datos.
-5. Funcionabilidad del login (QUE DIFERENCIE SI EL LOGIN FUE DE CLIENTE O DE EMPLEADO).
+| ASIGNACION | ESTATUS | INTEGRANTE ASIGNADO | COMENTARIOS |
+|------------|---------|---------------------|-------------|
+| creacion base de datos | PENDIENTE | PENDIENTE | PENDIENTE |
+| conexion base de datos, sistema | PENDIENTE | PENDIENTE | PENDIENTE |
+| funcionabilidad de login | PENDIENTE | PENDIENTE | PENDIENTE |
+| event_manager | PENDIENTE | PENDIENTE | PENDIENTE |
+| employee_manager | PENDIENTE | PENDIENTE | PENDIENTE |
 
 
 Fase 3: Funcionabilidad.
+| ASIGNACION | ESTATUS | INTEGRANTE ASIGNADO | COMENTARIOS |
+|------------|---------|---------------------|-------------|
+
+
 Fase 4: Implementacion.
+| ASIGNACION | ESTATUS | INTEGRANTE ASIGNADO | COMENTARIOS |
+|------------|---------|---------------------|-------------|
