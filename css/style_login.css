@@ -12,6 +12,10 @@ body {
 	background-attachment: inherit;
 	background-size: cover;
   }
+
+ .fondo__login{
+	background-color: rgba(0, 128, 128, 0.5);
+ } 
 .main{
 	width: 550px;
 	height: 600px;
