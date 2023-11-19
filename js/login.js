@@ -1,26 +1,26 @@
-function validarContraseñas(pswd, confirmpswd) {
-  if (pswd === confirmpswd) {
-    return true;
-  } else {
-    return false;
-  }
+with(document.registro){
+	onsubmit = function(e){
+		e.preventDefault();
+		ok = true;
+	
+		if(ok && pswd.value==""){
+			ok=false;
+			alert("Debe escribir su contraseña");
+			password.focus();
+		}
+		if(ok && confirmpswd.value==""){
+			ok=false;
+			alert("Debe reconfirmar su contraseña");
+			confirmpswd.focus();
+		}
+
+		if(ok && pswd.value!= confirmpswd.value){
+			ok=false;
+			alert("Las contraseñas no coinciden");
+			confirmpswd.focus();
+		}
+
+
+		if(ok){ submit(); }
+	}
 }
-
-const formularioRegistro = document.querySelector("form[name='registro']");
-
-formularioRegistro.addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const pswd = formularioRegistro.querySelector("input[name='pswd']").value;
-  const confirmpswd = formularioRegistro.querySelector("input[name='confirmpswd']").value;
-
-  const valido = validarContraseñas(pswd, confirmpswd);
-
-  if (valido) {
-    // Submit the form or perform other actions
-    alert("Registro exitoso");
-    document.registro.reset(); // Clear the form fields
-  } else {
-    alert("Las contraseñas no coinciden");
-  }
-});

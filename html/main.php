@@ -14,15 +14,15 @@
     <!--------------------NAVBAR--------------------->
     <header class="navbar">
         <div class="navbar__icon">
-            <a href="main.html"><img src="../image/main_icon.png" alt="Rosebrith" title="Inicio"></a>
+            <a href="main.php"><img src="../image/main_icon.png" alt="Rosebrith" title="Inicio"></a>
         </div>
         <nav>
            <ul class="nav__links">
-                <li><a href="services.html">Servicios</a></li>
-                <li><a href="contact_us.html">Contactanos</a></li>
+                <li><a href="services.php">Servicios</a></li>
+                <li><a href="contact_us.php">Contactanos</a></li>
            </ul>            
         </nav>
-        <a class="navbar__button" href="login.html"><button>Iniciar sesion</button></a>
+        <a class="navbar__button" href="login.php"><button>Iniciar sesion</button></a>
     </header>
     
     <!--------------------CONTENT--------------------->
@@ -37,7 +37,7 @@
             <p>Disfruta de un dia refrescante reservando tu cita en Rosebrith.</p>
         </div>
         <div class="content__button">
-            <a href="reserve.html"><button class="content__button--button" id="btn_reserva">¡Reserva ahora!</button></a>
+            <a href="reserve.php"><button class="content__button--button" id="btn_reserva">¡Reserva ahora!</button></a>
         </div>
     </div>
     
@@ -58,7 +58,7 @@
                             <h2 class="card__title">Alberca</h2>
                             <p class="card__description">Pasa con nosotros un dia refrescante en nuestra gran Alberca.</p>
                         </div>
-                        <a href="services.html"><button class="card__button">Conoce más</button></a href>
+                        <a href="services.php"><button class="card__button">Conoce más</button></a href>
                     </div>
                 </article>
                 <!-------------LOUNGE----------->
@@ -69,7 +69,7 @@
                             <h2 class="card__title">Salon</h2>
                             <p class="card__description">Pasa con nosotros tu evento más importante en nuestro gran Salon.</p>
                         </div>
-                        <a href="services.html"><button class="card__button">Conoce más</button></a href>
+                        <a href="services.php"><button class="card__button">Conoce más</button></a href>
                     </div>
                 </article>
             <!--------------END IMAGE CARDS---------------------->   
