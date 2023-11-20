@@ -33,7 +33,7 @@ Fase 1: Diseño de interfaz.
 |------------|---------|----------------------|-------------|
 | header | COMPLETADO | Esdras Amaya | COMPLETADO. |
 | main | COMPLETADO | Esdras Amaya, Osvaldo Olivares | COMPLETADO. |
-| services | ATENDIENDO | Daniel Segovia | Creacion de pagina donde muestre los servicios ofrecidos. |
+| services | PENDIENTE | Daniel Segovia | Faltan detalles |
 | contact_us | COMPLETADO | Esdras Amaya | COMPLETADO. |
 | login | COMPLETADO | Osvaldo Olivares | COMPLETADO. |
 | reserve | COMPLETADO | Alan Yahir | COMPLETADO. |
@@ -43,11 +43,15 @@ Fase 1: Diseño de interfaz.
 Fase 2: Diseño de base de datos e implementacion a software.
 | ASIGNACION | ESTATUS | INTEGRANTE ASIGNADO | COMENTARIOS |
 |------------|---------|---------------------|-------------|
-| creacion base de datos | PENDIENTE | PENDIENTE | PENDIENTE |
-| conexion base de datos, sistema | PENDIENTE | PENDIENTE | PENDIENTE |
-| funcionabilidad de login | PENDIENTE | PENDIENTE | PENDIENTE |
-| event_manager | PENDIENTE | PENDIENTE | PENDIENTE |
-| employee_manager | PENDIENTE | PENDIENTE | PENDIENTE |
+| creacion base de datos | COMPLETADO | Esdras Amaya | COMPLETADO |
+| conexion base de datos a sistema | COMPLETADO | Daniel Segovia | COMPLETADO |
+| funcionabilidad de login | COMPLETADO | Daniel Segovia | COMPLETADO |
+| client_page | PENDIENTE | Esdras Amaya | Pagina que reedirige al cliente al loguearse. En esta pagina el cliente podra ver sus reservaciones actual y anteriores. |
+| admin_page | PENDIENTE | Alan Arratia | Pagina que reedirige al empleado al loguearse. En esta pagina el administrador podra ver empleados, reservaciones/eventos, clientes y hacer modificaciones en ella. |
+| employee_page | PENDIENTE | Osvaldo Olivares | Pagina que reedirige al administrador al loguearse. En esta pagina el empleado podra ver las reservaciones/eventos y hacer modificaciones en ella. |
+| funcionabilidad de client_page | PENDIENTE | Esdras Amaya, Daniel Segovia | Debe mostrar el historial de reservaciones del cliente y si tiene algun adeudo pendiente. |
+| funcionabilidad de admin_page | PENDIENTE | Alan Arratia, Daniel Segovia | Debe mostrar la lista de empleados y poder gestionar con ella, la lista de reservaciones/eventos y poder gestionar con ella y la lista de clientes y poder gestionar sobre ella. |
+| funcionabilidad de admin_page | PENDIENTE | Osvaldo Olivares, Daniel Segovia | Debe mostrar la lista de reservaciones/eventos y poder gestionar sobre ella. |
 
 
 Fase 3: Funcionabilidad.
