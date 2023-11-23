@@ -43,15 +43,16 @@ Fase 1: Diseño de interfaz.
 Fase 2: Diseño de base de datos e implementacion a software.
 | ASIGNACION | ESTATUS | INTEGRANTE ASIGNADO | COMENTARIOS |
 |------------|---------|---------------------|-------------|
-| creacion base de datos | COMPLETADO | Esdras Amaya | COMPLETADO |
-| conexion base de datos a sistema | COMPLETADO | Daniel Segovia | COMPLETADO |
-| funcionabilidad de login | COMPLETADO | Daniel Segovia | COMPLETADO |
-| client_page | PENDIENTE | Esdras Amaya | Pagina que reedirige al cliente al loguearse. En esta pagina el cliente podra ver sus reservaciones actual y anteriores. |
+| creacion base de datos | COMPLETADO | Esdras Amaya | COMPLETADO. |
+| conexion base de datos a sistema | COMPLETADO | Daniel Segovia | COMPLETADO. |
+| funcionabilidad de login | COMPLETADO | Daniel Segovia | COMPLETADO. |
+| client_page | EN PROCESO | Esdras Amaya | Falta estilos en la tabla y un boton que reediriga a reserve en caso de no tener ninguna reservacion o en caso de querer hacer una reservacion nueva. Falta mostrar si tiene alguna deuda pendiente de alguna reservacion. |
 | admin_page | PENDIENTE | Alan Arratia | Pagina que reedirige al empleado al loguearse. En esta pagina el administrador podra ver empleados, reservaciones/eventos, clientes y hacer modificaciones en ella. |
 | employee_page | PENDIENTE | Osvaldo Olivares | Pagina que reedirige al administrador al loguearse. En esta pagina el empleado podra ver las reservaciones/eventos y hacer modificaciones en ella. |
-| funcionabilidad de client_page | PENDIENTE | Esdras Amaya, Daniel Segovia | Debe mostrar el historial de reservaciones del cliente y si tiene algun adeudo pendiente. |
+| funcionabilidad de client_page | EN PROCESO | Esdras Amaya, Daniel Segovia | Falta estilos en la tabla y un boton que reediriga a reserve en caso de no tener ninguna reservacion o en caso de querer hacer una reservacion nueva. Falta mostrar si tiene alguna deuda pendiente de alguna reservacion. |
 | funcionabilidad de admin_page | PENDIENTE | Alan Arratia, Daniel Segovia | Debe mostrar la lista de empleados y poder gestionar con ella, la lista de reservaciones/eventos y poder gestionar con ella y la lista de clientes y poder gestionar sobre ella. |
 | funcionabilidad de admin_page | PENDIENTE | Osvaldo Olivares, Daniel Segovia | Debe mostrar la lista de reservaciones/eventos y poder gestionar sobre ella. |
+| funcionabilidad de contact_us | PENDIENTE | Daniel Segovia | Al contestar el formulario de contactanos, debe enviar un correo al administrador y un mensaje de confirmacion al cliente. |
 
 
 Fase 3: Funcionabilidad.
