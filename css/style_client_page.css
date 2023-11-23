@@ -1,0 +1,97 @@
+/* ------------------ESTILOS DEL DOCUMENTO------------------ */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #FFFF;
+	font-family: 'Roboto';
+}
+
+/* ------------------ESTILOS DEL BANNER------------------ */
+.banner {
+	background-image: url('../image/img_pool_1.jpg');
+  	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	height: 175px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+	margin-left: 200px;
+	margin-right: 200px;
+	border-radius: 10px;
+}
+
+img {
+	max-width: 100%;
+  	height: auto;
+}
+
+/* ------------------ESTILOS DEL CONTENT------------------ */
+.content {
+	padding-left: 200px;
+	padding-top: 10px;
+	padding-right: 50px;
+	padding-bottom: 5px;
+}
+
+.content__title {
+	padding-bottom: 20px;
+}
+
+/* ------------------ESTILOS DEL TABLE------------------ */
+.table {
+	padding-top: 5px;
+	padding-left: 200px;
+	padding-right: 200px;
+}
+
+table {
+	width: 100%;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+thead {
+	width: 100%;
+	border: 1px solid black;
+}
+
+th {
+	height: 50px;
+	background-color: #1a4d60;
+	color: white;
+	border: 1px solid black;
+}
+
+td{
+	text-align: center;
+	height: 30px;
+	border: 1px solid black;
+}
+
+tr:hover {background-color: rgb(220, 220, 220);}
+
+/* ------------------ESTILOS DE RESERVATION------------------ */
+.reservation {
+	text-align: center;
+	margin: 25px;
+}
+
+.reservation__button {
+	margin-left: 20px;
+	font-weight: 700;
+	color: black;
+	padding: 9px 25px;
+	background: white;
+	border: 1px solid #54a4e4;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.2s ease 0s;
+}
+
+.reservation__button:hover {
+	color: #54a4e4;
+	transform: scale(1.1);
+}

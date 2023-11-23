@@ -20,6 +20,7 @@
            <ul class="nav__links">
                 <li><a href="services.php">Servicios</a></li>
                 <li><a href="contact_us.php">Contactanos</a></li>
+                <li><a href="client_page.php">Perfil</a></li>
            </ul>            
         </nav>
         <a class="navbar__button" href="login.php"><button>Iniciar sesion</button></a>
