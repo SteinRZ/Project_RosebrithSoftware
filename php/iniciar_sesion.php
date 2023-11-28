@@ -21,16 +21,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["iniciar_sesion"])) {
 
         switch ($rol) {
             case 'cliente':
-                header("Location: client_page.php");
+                header("Location: ../html/client_page.php");
                 break;
             case 'administrador':
-                header("Location: contact_us.php");
+                header("Location: ../html/admin_page.php");
                 break;
             case 'empleado':
-                header("Location: employee_page.php");
+                header("Location: ../html/employee_page.php");
                 break;
             default:
-                header("Location: login.php");
+                header("Location: ../html/login.php");
                 break;
         }
         $usuario_encontrado = true; // Indica que se encontró al usuario
@@ -40,7 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["iniciar_sesion"])) {
 
 // Verificar si no se encontró al usuario y mostrar el mensaje
 if (!$usuario_encontrado && isset($_POST["iniciar_sesion"])) {
-    echo "<script>alert('El usuario no existe, Asegurate de tener una cuenta registrada.');</script>";
+    echo "<script>
+        alert('El usuario no existe, Asegurate de tener una cuenta registrada.');
+        window.location.href='../html/login.php';
+      </script>";
 }
 
 // CERRAR CONEXION

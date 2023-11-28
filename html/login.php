@@ -29,11 +29,7 @@
             <input type="checkbox" id="chk" aria-hidden="true">
             <!----------------INICIARSESION----------------->
                 <div class="login">
-                    <form name="sesion" method = "POST">
-                        <?php 
-                        include ("..\php\iniciar_sesion.php")
-                        
-                        ?>
+                    <form name="sesion" method = "POST" action="../php/iniciar_sesion.php">
                         <label for="chk" aria-hidden="true">Iniciar Sesíon</label>
                         <input type="email" name="email2" placeholder="Correo" required="">
                         <input type="password" name="pswd2" placeholder="Contraseña" required="">           
@@ -42,10 +38,7 @@
                 </div>
             <!-----------------CREARCUENTA-------------->
                 <div class="signup">
-                    <form name="registro" method="POST">
-                        <?php 
-                        include ("..\php\insertar_cliente.php")
-                        ?>
+                <form name="registro" method="POST" action="../php/insertar_cliente.php">
                         <label for="chk" aria-hidden="true">Crear Cuenta</label>
                         <input type="name" name="name" placeholder="Nombre" required="">
                         <input type="lname" name="apellidoP" placeholder="Apellido Paterno" required="">
