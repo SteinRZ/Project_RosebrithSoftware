@@ -4,7 +4,7 @@ ini_set('display_errors', 0);
 include 'db_config.php';
 
 // VERIFICAR ENVIO DEL FORMULARIO
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["crear_cuenta"])) {
     // DATOS DEL FORMULARIO
     $nombre = $_POST["name"];
     $apellidoPaterno = $_POST["apellidoP"];
@@ -26,7 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // EJECUCION DE CONSULTA EN LA TABLA "cliente"
         if ($conn->query($sql_cliente) === TRUE) {
-            // echo "Usuario y Cliente registrados correctamente.";
+            echo "<script>
+                alert('Se creo la cuenta correctamente.');
+                window.location.href='../html/login.php';
+              </script>";
+        exit();
         } else {
             // echo "Error al registrar cliente: " . $conn->error;
         }

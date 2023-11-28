@@ -7,8 +7,10 @@
     <link rel="icon" href="../image/main_icon.png">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/style_client_page.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap">
 </head>
 <body>
+
     <!--------------------NAVBAR--------------------->
     <header class="navbar">
         <div class="navbar__icon">
@@ -18,10 +20,9 @@
            <ul class="nav__links">
                 <li><a href="services.php">Servicios</a></li>
                 <li><a href="contact_us.php">Contactanos</a></li>
-                <li><a href="client_page.php">Perfil</a></li>
            </ul>
         </nav>
-        <a class="navbar__button" href="login.php"><button>Iniciar sesion</button></a>
+        <?php include '..\php\change_button.php';?>
     </header>
     
     <!--------------------BANNER--------------------->
@@ -33,7 +34,10 @@
             <h2>Reservas anteriores realizadas</h2>
         </div>
         <div class="content__text">
-            <p>Tu historial de reservas</p>
+            <?php include '..\php\client_consult.php';?>
+            <h2>Bienvenido, <?php echo $nombre_cliente?></h2>
+            <br>
+            <h3>Tu historial de reservas</h3>
         </div>
     </div>
 

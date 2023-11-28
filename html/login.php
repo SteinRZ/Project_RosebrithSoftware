@@ -23,7 +23,6 @@
                     <li><a href="contact_us.php">Contactanos</a></li>
             </ul>            
             </nav>
-            <a class="navbar__button" href="login.php"><button>Iniciar sesion</button></a>
         </header>
         <!-----------------------LOGIN/SIGNUP----------------->
         <div class="main">  	

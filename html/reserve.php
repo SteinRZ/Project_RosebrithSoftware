@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/style_reserve.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap">
-
-    
 </head>
 <body>
+<?php
+    // Incluir el archivo donde se obtiene la información del cliente
+    include '..\php\client_consult.php';
+?>
     <!--------------------NAVBAR--------------------->
     <header class="navbar">
         <div class="navbar__icon">
@@ -23,35 +25,35 @@
                 <li><a href="contact_us.php">Contactanos</a></li>
            </ul>            
         </nav>
-        <a class="navbar__button" href="login.php"><button>Iniciar sesion</button></a>
+        <?php include '..\php\change_button.php';?>
     </header>
 
     <section class="reservation-section">
         <h2>Reserva</h2>
-        <form action="procesar_reserva.php" method="post">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
+        <form method="post" action="../php/reserve_client.php">
+        <label for="tipo_reserva">Tipo de Reservacion:</label>
+        <select id="tipo_reserva" name="tipo_reserva" required>
+            <option value="Alberca">Alberca</option>
+            <option value="Salón">Salón</option>
+            <option value="Ambos">Ambos</option>
+        </select>
 
-            <label for="email">Correo Electrónico:</label>
-            <input type="email" id="email" name="email" required>
+        <label for="telefono_cliente">Teléfono:</label>
+        <input type="tel" id="telefono_cliente" name="telefono_cliente" required>
 
-            <label for="telefono">Teléfono:</label>
-            <input type="tel" id="telefono" name="telefono" required>
+        <label for="fecha_reservacion">Fecha de Reservación:</label>
+        <input type="date" id="fecha_reservacion" name="fecha_reservacion" required>
 
-            <label for="tipo_reserva">Tipo de Reserva:</label>
-            <select id="tipo_reserva" name="tipo_reserva" required>
-                <option value="alberca">Alberca</option>
-                <option value="salon">Salón de Fiestas</option>
-                <option value="ambos">Ambos</option>
-            </select>
+        <label for="hora_inicio">Hora de Inicio:</label>
+        <input type="time" id="hora_inicio" name="hora_inicio" required>
 
-            <label for="fecha">Fecha de Reserva:</label>
-            <input type="date" id="fecha" name="fecha" required>
+        <label for="hora_final">Hora de Finalización:</label>
+        <input type="time" id="hora_final" name="hora_final" required>
 
-            <label for="comentarios">Comentarios adicionales:</label>
-            <textarea id="comentarios" name="comentarios" rows="4"></textarea>
+        <label for="anticipo">Anticipo:</label>
+        <input type="text" id="anticipo" name="anticipo" required>
 
-            <button class="btn" id="btn_reserva" type="submit">Reservar</button>
+        <button class="btn" id="btn_reserva" type="submit" name="agregar_reserva">Reservar</button>
         </form>
     </section>
 </body>

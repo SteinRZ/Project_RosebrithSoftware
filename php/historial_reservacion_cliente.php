@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 
 // CONFIGURACION DE LA BASE DE DATOS
 include 'db_config.php';

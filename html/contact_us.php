@@ -21,7 +21,7 @@
                 <li><a href="contact_us.php">Contactanos</a></li>
            </ul>            
         </nav>
-        <a class="navbar__button" href="login.php"><button>Iniciar sesion</button></a>
+        <?php include '..\php\change_button.php';?>
     </header>
 
     <!--------------------BANNER--------------------->
