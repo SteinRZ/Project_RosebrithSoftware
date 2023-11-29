@@ -66,7 +66,7 @@
                     <img class="card__background" src="../image/img_eventhall_2.jpg" alt="Salon">
                     <div class="card__content | flow">
                         <div class="card__content--container | flow">
-                            <h2 class="card__title">Salon</h2>
+                            <h2 class="card__title">Salón</h2>
                             <p class="card__description">Pasa con nosotros tu evento más importante en nuestro gran Salon.</p>
                         </div>
                         <a href="services.php"><button class="card__button">Conoce más</button></a href>

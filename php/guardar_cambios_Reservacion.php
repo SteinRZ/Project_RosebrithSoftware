@@ -7,7 +7,9 @@
 <body>
 
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // CONFIGURACION DE LA BASE DE DATOS
 include("..\php\db_config.php");
@@ -23,9 +25,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Actualiza la tabla Reservacion
     $sql_update_reservacion = "UPDATE Reservacion SET Fecha_Reserva='$fecha_reserva', Tipo_Reserva='$tipo_reserva', Anticipo='$anticipo', Comentario='$comentario' WHERE ID_Reservacion=$id_reservacion";
     if ($conn->query($sql_update_reservacion) === TRUE) {
-        echo "Cambios guardados exitosamente (Reservacion).";
+        echo "<script>
+        alert('Se han guardado los cambios de la Reservación con exito.');
+        window.location.href='../html/admin_page.php';
+      </script>";
     } else {
-        echo "Error al guardar cambios (Reservacion): " . $conn->error;
+        echo "<script>
+        alert('Error al guardar los de la Reservación cambios.');
+        window.location.href='../html/admin_page.php';
+      </script>" . $conn->error;
     }
 }
 

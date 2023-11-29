@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // CONFIGURACION DE LA BASE DE DATOS
 include ("..\php\db_config.php");
@@ -129,12 +131,12 @@ $result_reservacion = $conn->query($sql_reservacion);
                 <li><a href="contact_us.php">Contactanos</a></li>
            </ul>            
         </nav>
-        <a class="navbar__button" href="login.php"><button>Iniciar sesion</button></a>
+        <?php include '..\php\change_button.php';?>
     </header>
 
 <!-- Mostrar tabla Empleado -->
 <div class="table-container">
-<h2>Tabla Empleado</h2>
+<br><h2>Tabla de Empleados</h2>
 <table border="1">
     <tr>
         <th>ID_Empleado</th>
@@ -171,7 +173,7 @@ $result_reservacion = $conn->query($sql_reservacion);
 
 <!-- Mostrar tabla Cliente -->
 <div class="table-container">
-<h2>Tabla Cliente</h2>
+<br><h2>Tabla de Clientes</h2>
 <table border="1">
     <tr>
         <th>ID_Cliente</th>
@@ -205,7 +207,7 @@ $result_reservacion = $conn->query($sql_reservacion);
 
 <!-- Mostrar tabla Reservacion -->
 <div class="table-container">
-<h2>Tabla Reservacion</h2>
+<br><h2>Tabla de Reservaciones</h2>
 <table border="1">
     <tr>
         <th>ID_Reservacion</th>
@@ -242,7 +244,7 @@ $result_reservacion = $conn->query($sql_reservacion);
 
 <!-- Agrega este formulario donde desees en tu página -->
 <div class="formulario-container">
-    <h2>Registrar Empleado</h2>
+    <h2>Registrar un Empleado</h2>
     <form action="../php/registrar_empleado.php" method="post">
         <label for="id_usuario">ID Usuario:</label>
         <input type="text" id="id_usuario" name="id_usuario" required>

@@ -28,56 +28,59 @@
     <div class="banner"></div>
 
     <!--------------------FORM--------------------->
-    <div class="form">
-        <div>
-            <h2>Contáctanos</h2>
+        <form id="contactForm" method="post" action="../php/send_email.php">
+        <div class="form">
+            <div>
+                <h2>Contáctanos</h2>
+            </div>
+            <div>
+                <p>En Rosebrith es un placer ayudarte, para cualquier aclaración o duda envíala aquí y nosotros nos pondremos en contacto.</p>
+            </div>
+            <div>
+                <div>
+                    <label for="field__name">Nombre:</label>
+                </div>
+                <div>
+                    <input type="text" name="field__name" id="field__name">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="field__email">Correo electrónico:</label>
+                </div>
+                <div>
+                    <input type="text" name="field__email" id="field__email">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="field__phone">Teléfono:</label>
+                </div>
+                <div>
+                    <input type="text" name="field__phone" id="field__phone">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="field__affair">Asunto:</label>
+                </div>
+                <div>
+                    <input type="text" name="field__affair" id="field__affair">
+                </div>
+            </div>
+            <div class="form__message">
+                <div>
+                    <label for="field__message">Mensaje:</label>
+                </div>
+                <div>
+                    <textarea name="field__message" class="form__message--input" id="field__message" cols="15" rows="5"></textarea>
+                </div>
+                <div class="form__send">
+                    <button type="submit" class="form__send--button">Enviar</button>
+                </div>
+            </div>
         </div>
-        <div>
-            <p>En Rosebrith es un placer ayudarte, para cualquier aclaracion o duda enviala aqui y nosotros nos ponemos en contacto.</p>
-        </div>
-        <div>
-            <div>
-                <label for="field__name">Nombre:</label>
-            </div>
-            <div>
-                <input type="text" name="field__name" id="field__name">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="field__email">Correo electronico:</label>
-            </div>
-            <div>
-                <input type="text" name="field__email" id="field__email">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="field__phone">Telefono:</label>
-            </div>
-            <div>
-                <input type="text" name="field__phone" id="field__phone">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="field__affair">Asunto:</label>
-            </div>
-            <div>
-                <input type="text" name="field__affair" id="field__affair">
-            </div>
-        </div>
-        <div class="form__message">
-            <div>
-                <label for="field__message">Mensaje:</label>
-            </div>
-            <div>
-                <textarea name="field__message" class="form__message--input" id="field__message" cols="15" rows="5"></textarea>
-            </div>
-            <div class="form__send">
-                <button class="form__send--button">Enviar</button>
-            </div>
-        </div>
+    </form>
     </div>
 
     <!--------------------INFORMATION--------------------->

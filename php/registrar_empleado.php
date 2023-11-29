@@ -6,7 +6,9 @@
 </head>
 <body>
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // CONFIGURACION DE LA BASE DE DATOS
 include ("../php/db_config.php");

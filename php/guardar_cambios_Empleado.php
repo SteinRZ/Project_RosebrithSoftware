@@ -7,7 +7,9 @@
 <body>
 
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 // CONFIGURACION DE LA BASE DE DATOS
 include("..\php\db_config.php");
@@ -22,9 +24,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Actualiza la tabla Empleado
     $sql_update = "UPDATE Empleado SET Area='$area', Telefono='$telefono', Sueldo='$Sueldo' WHERE ID_Empleado=$id_empleado";
     if ($conn->query($sql_update) === TRUE) {
-        echo "Cambios guardados exitosamente (Empleado).";
+        echo "<script>
+        alert('Se han guardado los cambios del Empleado con exito.');
+        window.location.href='../html/admin_page.php';
+      </script>";
     } else {
-        echo "Error al guardar cambios (Empleado): " . $conn->error;
+        echo "<script>
+        alert('Error al guardar los del Empleado cambios.');
+        window.location.href='../html/admin_page.php';
+      </script>" . $conn->error;
     }
 }
 

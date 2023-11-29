@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Gestion de Reservas</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="../css/style_employee_page.css">
+  <link rel="stylesheet" href="..\css\style_employee.css">
 </head>
 <body>
 <?php
@@ -116,18 +116,12 @@
 								<div class="filter-options">
 									<dl class="transfer-details">
 										<!-------Boton para eliminar la reserva------------->							
-										<form id="deleteForm" method="post" action="../php/employee_delete.php" onsubmit="return confirmDelete()">
+										<form method="post" action="../php/employee_delete.php">
 											<input type="hidden" name="id_reservacion" value="<?php echo $fila_reserva['ID_Reservacion']; ?>">
 											<button type="submit" name="delete_reservation" class="icon-button large">
 												<i class="ph ph-user-minus"></i>
 											</button>
 										</form>
-
-										<script>
-											function confirmDelete() {
-												return confirm("¿Estás seguro de que deseas eliminar esta reserva?");
-											}
-										</script>
 										<!-- Botón para gestionar la reserva -->
 										<form method="post" action="../php/employee_modify_page.php">
 											<!-- Asegúrate de incluir el ID de la reserva -->
