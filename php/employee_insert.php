@@ -29,6 +29,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->query($sql_cliente);
         $id_cliente = $conn->insert_id; // Obtener el ID del cliente insertado
 
+        // Verificar si ya existe una reserva con la misma fecha y tipo de reserva
+        $sql_verificar_reserva = "SELECT ID_Reservacion FROM reservacion WHERE Fecha_Reserva = '$fecha_reservacion' AND Tipo_Reserva = '$tipo_reserva'";
+        $result_verificar = $conn->query($sql_verificar_reserva);
+
+        if ($result_verificar->num_rows > 0 || $tipo_reserva === 'Ambos') {
+            // Si ya existe una reserva para la fecha y tipo seleccionados o si el tipo de reserva es "Ambos", mostrar una alerta
+            echo "<script>
+                    alert('No se puede realizar la reserva. La fecha o tipo de reserva ya está ocupada.');
+                    window.location.href='../html/employee_page.php';
+                  </script>";
+            exit();
+        }
+
         // Realizar la inserción en la tabla reservacion
         $sql_reservacion = "INSERT INTO reservacion (ID_Reservacion, ID_Cliente, Fecha_Reserva, Tipo_Reserva, Anticipo) 
                             VALUES (DEFAULT, $id_cliente, '$fecha_reservacion', '$tipo_reserva', '$anticipo')";

@@ -93,10 +93,10 @@
 					<h1>Hora de Finalización:</h1>
 					<input type="time" name="hora_final" required>
 
-					<h1>Anticipo:</h1>
+					<br><h1>Anticipo:</h1>
 					<input type="text" name="anticipo" required>
-
-					<br><button class="flat-button" type="submit" name="agregar_cita">Agregar Cita</button></br>
+					<br>
+					<br><button class="flat-button" type="submit" name="agregar_cita">Agregar Cita</button>
 				</form>
 				</center>
 				<!---------------------------------------------------------->

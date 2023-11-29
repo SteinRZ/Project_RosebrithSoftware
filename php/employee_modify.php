@@ -15,6 +15,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hora_final = $_POST['hora_final'];
         $anticipo = $_POST['anticipo'];
 
+         // Verificar si ya existe una reserva con la misma fecha y tipo de reserva
+         $sql_verificar_reserva = "SELECT ID_Reservacion FROM reservacion WHERE Fecha_Reserva = '$fecha_reservacion' AND Tipo_Reserva = '$tipo_reserva'";
+         $result_verificar = $conn->query($sql_verificar_reserva);
+ 
+         if ($result_verificar->num_rows > 0 && $tipo_reserva !== 'Ambos') {
+             // Si ya existe una reserva para la fecha y tipo seleccionados, mostrar una alerta
+             echo "<script>
+                     alert('No se puede realizar la reserva. La fecha o tipo de reserva ya está ocupada.');
+                     window.location.href='../html/employee_page.php';
+                   </script>";
+             exit();
+         } elseif ($result_verificar->num_rows > 0 && $tipo_reserva === 'Ambos') {
+             // Si el tipo de reserva es "Ambos" y ya existe una reserva para esa fecha, mostrar una alerta
+             echo "<script>
+                     alert('No se puede realizar la reserva. La fecha ya está ocupada para el tipo de reserva Ambos.');
+                     window.location.href='../html/employee_page.php';
+                   </script>";
+             exit();
+        } else{
         // Actualizar la tabla reservacion
         $sql_update_reservacion = "UPDATE reservacion 
                                    SET Fecha_Reserva='$fecha_reservacion', Tipo_Reserva='$tipo_reserva', Anticipo='$anticipo' 
@@ -53,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 alert('Modificación exitosa');
                 window.location.href='../html/employee_page.php';
               </script>";
-        exit();
+        exit();}
     }
 }
 

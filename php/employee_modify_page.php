@@ -100,7 +100,7 @@
 
                     <h1>Anticipo:</h1>
                     <input type="text" name="anticipo" value="<?php echo isset($anticipo) ? htmlspecialchars($anticipo) : ''; ?>" required>
-
+					<br>
                     <br><button class="flat-button" type="submit" name="modificar_cita">Modificar</button><br>
                 </form>
 				</center>

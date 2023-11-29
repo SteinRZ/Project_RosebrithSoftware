@@ -30,7 +30,7 @@
 				<a href="#" class="active">
 					Inicio
 				</a>
-				<a href="..\php\employee_add.php">
+				<a href="..\php\employee_add_page.php">
 					Agendar Cita
 				</a>
 			</div>
@@ -80,6 +80,12 @@
 								<div>
 									<dt>Anticipo</dt>
 								</div>
+								<div>
+									<dt>Hora Inicial</dt>
+								</div>
+								<div>
+									<dt>Hora Final</dt>
+								</div>
 								<div></div>	
 							</dl>
 						</div>
@@ -112,6 +118,12 @@
                                 <div>
                                     <dt>$<?php echo $fila_reserva['Anticipo']; ?></dt>
                                 </div>
+								<div>
+								<dt><?php echo $fila_reserva['Hora_Inicio']; ?></dt>
+								</div>
+								<div>
+									<dt><?php echo $fila_reserva['Hora_Final']; ?></dt>
+								</div>
 								<!------------------BOTONES-------------------->
 								<div class="filter-options">
 									<dl class="transfer-details">

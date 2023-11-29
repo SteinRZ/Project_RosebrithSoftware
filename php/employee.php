@@ -26,10 +26,12 @@ if ($result_empleado->num_rows > 0) {
 
     // Obtener las reservaciones según el área del empleado
     $sql_reservaciones = "SELECT r.ID_Reservacion, r.Fecha_Reserva, r.Tipo_Reserva, r.Anticipo, r.Comentario,
-                                u.Nombre AS NombreCliente, u.Apellido_Paterno AS ApellidoCliente
+                                u.Nombre AS NombreCliente, u.Apellido_Paterno AS ApellidoCliente,
+                                e.Hora_Inicio, e.Hora_Final
                         FROM reservacion r
                         INNER JOIN cliente c ON r.ID_Cliente = c.ID_Cliente
                         INNER JOIN usuario u ON c.ID_Usuario = u.ID_Usuario
+                        INNER JOIN evento e ON r.ID_Reservacion = e.ID_Reservacion
                         WHERE UPPER(r.Tipo_Reserva) = UPPER('$area')";
 
     $result_reservaciones = $conn->query($sql_reservaciones);
