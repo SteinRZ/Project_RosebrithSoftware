@@ -7,7 +7,9 @@ if (session_status() == PHP_SESSION_NONE) {
 include ("..\php\db_config.php");
 
 
-
+// CONSULTA DE USUARIOS
+$sql_usuario = "SELECT * FROM usuario";
+$result_usuario = $conn->query($sql_usuario);
 
 // CONSULTA DE EMPLEADOS
 $sql_empleado = "SELECT * FROM Empleado";
@@ -33,6 +35,15 @@ $result_reservacion = $conn->query($sql_reservacion);
     <link rel="stylesheet" href="../css/style_reserve.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap">
 
+    <link rel="icon" href="../image/main_icon.png">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/style_reserve.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap">
+    <!-- Agregamos la biblioteca de Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Tus estilos CSS aquí */
+    </style>
     <style>
     /* Agrega estilos de centrado para las tablas */
     .table-container {
@@ -133,6 +144,45 @@ $result_reservacion = $conn->query($sql_reservacion);
         </nav>
         <?php include '..\php\change_button.php';?>
     </header>
+
+    <div class="table-container">
+<h2>Tabla Usuarios</h2>
+<table border="1">
+    <tr>
+        <th>ID_Usuario</th>
+        <th>Nombre</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Correo</th>
+        <!-- Agrega más columnas según la estructura de tu tabla Empleado -->
+        <th>Contraseña</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+        <th>Eliminar</th>
+    </tr>
+    <?php
+    while ($row = $result_usuario->fetch_assoc()) {
+        echo "<tr>";
+        echo "<form action='../php/guardar_cambios_Usuario.php' method='post'>";
+
+        echo "<td><input type='hidden' name='ID_Usuario' value='" . $row['ID_Usuario'] . "'>" . $row['ID_Usuario'] . "</td>";
+        echo "<td><input type='text' name='Nombre' value='" . $row['Nombre'] . "'></td>";
+        echo "<td><input type='text' name='Apellido_Paterno' value='" . $row['Apellido_Paterno'] . "'></td>";
+        echo "<td><input type='text' name='Apellido_Materno' value='" . $row['Apellido_Materno'] . "'></td>";
+        echo "<td><input type='text' name='Correo' value='" . $row['Correo'] . "'></td>";
+        echo "<td><input type='password' name='Contraseña' value='" . $row['Contraseña'] . "'></td>";
+        echo "<td><input type='text' name='Rol' value='" . $row['Rol'] . "'></td>";
+        // Botón Guardar
+        echo "<td><input type='submit' class='guardar-button' value='Guardar'></td>";
+        // Botón Eliminar
+        echo "<td><button type='submit' formaction='../php/eliminar_registro.php' name='ID' value='" . $row['ID_Usuario'] . "'>Eliminar</button></td>";
+        echo "</form>";
+        echo "</tr>";
+    }
+    ?>
+</table>
+</div>
+
 
 <!-- Mostrar tabla Empleado -->
 <div class="table-container">
@@ -244,23 +294,92 @@ $result_reservacion = $conn->query($sql_reservacion);
 
 <!-- Agrega este formulario donde desees en tu página -->
 <div class="formulario-container">
-    <h2>Registrar un Empleado</h2>
-    <form action="../php/registrar_empleado.php" method="post">
-        <label for="id_usuario">ID Usuario:</label>
-        <input type="text" id="id_usuario" name="id_usuario" required>
+    <h2>Registrar Empleado</h2>
+    <?php 
+    include ("../php/registrarempleado.php");
+?>
+    <form name="registrarempleado" method="post">
+        <input type="name" name="name" placeholder="Nombre" required="">
 
-        <label for="area">Área:</label>
-        <input type="text" id="area" name="area" required>
+        <input type="lname" name="apellidoP" placeholder="Apellido Paterno" required="">
 
-        <label for="telefono">Teléfono:</label>
-        <input type="text" id="telefono" name="telefono" required>
+        <input type="lname" name="apellidoM" placeholder="Apellido Materno" required="">
 
-        <label for="sueldo">Sueldo:</label>
-        <input type="text" id="sueldo" name="sueldo" required>
+        <input type="email" name="email" placeholder="Correo" required="">
 
+        <input type="tel" name="telefono" placeholder="Telefono" required="" pattern="[0-9]{10}">
+
+        <select id="area" name="area" placeholder="Area"  required>
+        <option value="Alberca">Alberca</option>
+        <option value="Salón">Salón</option>
+        </select>
+
+        <input type="float" id="sueldo" placeholder="Sueldo" name="sueldo" required>
+
+        <input type="password" name="pswd" placeholder="Contraseña" required="">
+
+    
         <button type="submit">Registrar</button>
     </form>
 </div>
+<!-- Gráfico de barras agrupadas para Usuarios, Empleados, Clientes y Reservaciones -->
+<canvas id="groupedChart" width="300" height="100"></canvas>
+
+<script>
+    // Datos para los gráficos
+    var usuariosData = <?php echo $result_usuario->num_rows; ?>;
+    var empleadosData = <?php echo $result_empleado->num_rows; ?>;
+    var clientesData = <?php echo $result_cliente->num_rows; ?>;
+    var reservacionesData = <?php echo $result_reservacion->num_rows; ?>;
+
+    // Función para crear gráfico de barras agrupadas
+    function createGroupedChart() {
+        var ctx = document.getElementById('groupedChart').getContext('2d');
+        var groupedChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Usuarios', 'Empleados', 'Clientes', 'Reservaciones'],
+                datasets: [
+                    {
+                        label: 'Cantidad',
+                        data: [usuariosData, empleadosData, clientesData, reservacionesData],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)'
+                        ],
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    x: {
+                        beginAtZero: true
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    // Crear gráfico de barras agrupadas
+    createGroupedChart();
+</script>
+
+
+
+
+
 
 
 

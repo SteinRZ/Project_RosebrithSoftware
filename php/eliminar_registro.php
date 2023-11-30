@@ -22,13 +22,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql_delete = "DELETE FROM Cliente WHERE ID_Cliente = $id";
     } elseif (isset($_POST['ID_Reservacion'])) {
         $sql_delete = "DELETE FROM Reservacion WHERE ID_Reservacion = $id";
+    } elseif (isset($_POST['ID_Usuario'])) {
+        $sql_delete = "DELETE FROM usuario WHERE ID_Usuario = $id";
     }
+    
 
     // Ejecuta la consulta
     if ($conn->query($sql_delete) === TRUE) {
-        echo "Registro eliminado correctamente.";
+        echo "<script>
+        alert('Registro eliminado correctamente.');
+        window.location.href='../html/admin_page.php';
+      </script>";
     } else {
-        echo "Error al eliminar el registro: " . $conn->error;
+        echo "<script>
+        alert('Error al eliminar el registro');
+        window.location.href='../html/admin_page.php';
+      </script>" . $conn->error;
     }
 }
 
