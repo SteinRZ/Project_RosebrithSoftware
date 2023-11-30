@@ -19,7 +19,7 @@ if ($conn->query($sql) === TRUE) {
     $idUsuarioInsertado = $conn->insert_id;
 
     // Ahora, inserta el nuevo cliente en la tabla "cliente"
-    $sqlCliente = "INSERT INTO cliente (ID_Usuario, Telefono) VALUES ('$idUsuarioInsertado', '$telefono')";
+    $sqlCliente = "INSERT INTO cliente (ID_Usuario, Telefono, Deuda) VALUES ('$idUsuarioInsertado', '$telefono' ,10)";
     if ($conn->query($sqlCliente) === TRUE) {
         echo "<script>
         alert('Cliente registrado exitosamente.');
