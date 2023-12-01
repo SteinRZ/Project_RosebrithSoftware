@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "070803";
+$password = "123456789";
 $dbname = "rosebrith";
 
 // Crear conexión
