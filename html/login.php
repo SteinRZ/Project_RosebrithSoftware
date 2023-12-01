@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/style_login.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
 </head>
 <body>
     <div class="fondo__login">

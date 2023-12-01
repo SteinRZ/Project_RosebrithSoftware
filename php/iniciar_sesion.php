@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'db_config.php';
-
+//
 $usuario_encontrado = false; // Variable para controlar si se encontró al usuario
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["iniciar_sesion"])) {
