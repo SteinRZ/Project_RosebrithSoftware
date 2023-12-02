@@ -46,10 +46,7 @@
         <?php include ("..\php\historial_reservacion_cliente.php"); ?>
     </div>
 
-    <!--------------------BOTON DE RESERVACION--------------------->
-    <div class="reservation">
-        <a href="reserve.php"><button class="reservation__button">Crear reservación</button></a>
-    </div>
+  
 
 </body>
 </html>

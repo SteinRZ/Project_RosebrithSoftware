@@ -9,11 +9,10 @@ include 'db_config.php';
 // CONSULTA DE HISTORIAL DE RESERVACIONES DE CLIENTE
 $id_usuario = mysqli_real_escape_string($conn, $_SESSION['id_usuario']);
 
-$sql = "SELECT r.ID_Reservacion, r.Fecha_Reserva, r.Tipo_Reserva, e.Hora_Inicio, e.Hora_Final, e.Total
+$sql = "SELECT r.ID_Reservacion, r.Fecha_Reserva, r.Tipo_Reserva, r.Hora_Inicio, r.Hora_Finalizado, r.Total, r.TotalCambiado
         FROM Usuario u 
         INNER JOIN Cliente c ON u.ID_Usuario = c.ID_Usuario 
         INNER JOIN Reservacion r ON c.ID_Cliente = r.ID_Cliente 
-        INNER JOIN Evento e ON r.ID_Reservacion = e.ID_Reservacion
         WHERE u.ID_Usuario = '$id_usuario'";
 
 $result = $conn->query($sql);
@@ -27,6 +26,7 @@ if ($result->num_rows > 0) {
             <th>Hora de inicio de evento</th>
             <th>Hora de conclusion de evento</th>
             <th>Costo del evento</th>
+            <th>Total que falta a pagar</th>
           </tr>";
           
   // Salida de cada fila
@@ -35,8 +35,9 @@ if ($result->num_rows > 0) {
           "</td><td>".$row["Fecha_Reserva"].
           "</td><td>".$row["Tipo_Reserva"].
           "</td><td>".$row["Hora_Inicio"].
-          "</td><td>".$row["Hora_Final"].
+          "</td><td>".$row["Hora_Finalizado"].
           "</td><td>".$row["Total"].
+          "</td><td>".$row["TotalCambiado"].
         "</td></tr>";
   }
   echo "</table>";
