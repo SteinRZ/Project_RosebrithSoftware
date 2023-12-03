@@ -62,6 +62,27 @@
                 <img src="../image/img_eventhall_2.jpg" alt="Imagen alberca" class="img2">
             </div>
         </div>
+        <div class="servicios__texto">
+            <p>Disfruta tu siguiente experencia con nosotros con nuestros precios:</p>
+            <br>
+            <h3>Alberca y Salon:</h3>
+            <p>Lunes a Jueves - $1800</p>
+            <p>Viernes - $2800</p>
+            <p>Sabado y Domingo - $3800</p>
+            <br>
+            <h3>Solo alberca:</h3>
+            <p>Lunes a Jueves - $900</p>
+            <p>Viernes - $1400</p>
+            <p>Sabado y Domingo - $1900</p>
+            <br>
+            <h3>Solo salon:</h3>
+            <p>Lunes a Jueves - $900</p>
+            <p>Viernes - $1400</p>
+            <p>Sabado y Domingo - $1900</p>
+            <br>
+            <p>Esto por 6 horas con un limite de hasta las 10pm.</p>
+            <p>Aclaracion: Si el evento pasa de las 10:00pm, las horas extras se cobraran $600 cada hora.</p>
+        </div>
     </div>
 
     <!--------------------CONTACT-------------------->
@@ -70,10 +91,10 @@
             <h3>Contactanos</h3>
         </div>
         <p>
-            Telefono:
+            Telefono: +52 867 --- ----
         </p>
         <p>
-            Whatsapp:
+            Whatsapp: +52 867 --- ----
         </p>
         <p>
             Correo:
