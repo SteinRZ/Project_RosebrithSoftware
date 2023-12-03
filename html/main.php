@@ -21,7 +21,7 @@
                 <li><a href="#contactanos">Contactanos</a></li>
            </ul>            
         </nav>
-        <?php include '..\php\change_button.php';?>
+        <?php include '../php/change_button.php';?>
     </header>
     
     <!--------------------CONTENT--------------------->

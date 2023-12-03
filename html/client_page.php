@@ -22,7 +22,7 @@
                 <li><a href="contact_us.php">Contactanos</a></li>
            </ul>
         </nav>
-        <?php include '..\php\change_button.php';?>
+        <?php include '../php/change_button.php';?>
     </header>
     
     <!--------------------BANNER--------------------->
@@ -34,7 +34,7 @@
             <h2>Reservas anteriores realizadas</h2>
         </div>
         <div class="content__text">
-            <?php include '..\php\client_consult.php';?>
+            <?php include '../php/client_consult.php';?>
             <h2>Bienvenido, <?php echo $nombre_cliente?></h2>
             <br>
             <h3>Tu historial de reservas</h3>
@@ -43,7 +43,7 @@
 
     <!--------------------TABLA DE RESERVACIONES--------------------->  
     <div class="table">
-        <?php include ("..\php\historial_reservacion_cliente.php"); ?>
+        <?php include ("../php/historial_reservacion_cliente.php"); ?>
     </div>
 
   

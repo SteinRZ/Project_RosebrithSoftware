@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'db_config.php';
-//
+
 $usuario_encontrado = false; // Variable para controlar si se encontró al usuario
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["iniciar_sesion"])) {
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["iniciar_sesion"])) {
     $sql = "SELECT * FROM usuario WHERE Correo = '$correo' AND Contraseña = '$contrasena'";
     $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
+    if ($result && $result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
         $_SESSION['id_usuario'] = $usuario['ID_Usuario'];
         $_SESSION['correo'] = $usuario['Correo'];
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["iniciar_sesion"])) {
 // Verificar si no se encontró al usuario y mostrar el mensaje
 if (!$usuario_encontrado && isset($_POST["iniciar_sesion"])) {
     echo "<script>
-        alert('El usuario no existe, Asegurate de tener una cuenta registrada.');
+        alert('El usuario no existe, Asegúrate de tener una cuenta registrada.');
         window.location.href='../html/login.php';
       </script>";
 }

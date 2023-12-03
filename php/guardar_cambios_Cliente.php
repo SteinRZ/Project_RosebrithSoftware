@@ -12,7 +12,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // CONFIGURACION DE LA BASE DE DATOS
-include("..\php\db_config.php");
+include("../php/db_config.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera los datos del formulario para Cliente
