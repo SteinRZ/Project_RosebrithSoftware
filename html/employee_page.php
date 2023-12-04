@@ -36,7 +36,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-            <div class="sidebar-brand-icon rotate-n-15">
+            <div class="sidebar-brand-icon">
                     <i class="fas fa-droplet"></i>
             </div>
                 <div class="sidebar-brand-text mx-3">Gestión Rosebrith</div>
@@ -112,7 +112,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../php/logout.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cerrar Sesión
                                 </a>
@@ -150,6 +150,8 @@
                                             <th>Hora de Inicio</th>
                                             <th>Hora de Finalización</th>
                                             <th>Duración</th>
+                                            <th>Costo</th>
+                                            <th>Total a Pagar</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -163,6 +165,8 @@
                                             <th>Hora de Inicio</th>
                                             <th>Hora de Finalización</th>
                                             <th>Duración</th>
+                                            <th>Costo</th>
+                                            <th>Total a Pagar</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </tfoot>
@@ -179,6 +183,8 @@
                                                         <td><?php echo $fila_reserva['Hora_Inicio']; ?></td>
                                                         <td><?php echo $fila_reserva['Hora_Finalizado']; ?></td>
                                                         <td><?php echo $fila_reserva['Duracion']; ?></td>
+                                                        <td><?php echo $fila_reserva['Total']; ?></td>
+                                                        <td><?php echo $fila_reserva['TotalCambiado']; ?></td>
                                                         <td>
                                                             <form method="post" action="../php/employee_delete.php">
                                                             <input type="hidden" name="id_reservacion" value="<?php echo $fila_reserva['ID_Reservacion']; ?>">

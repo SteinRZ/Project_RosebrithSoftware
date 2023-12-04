@@ -6,7 +6,40 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 include 'db_config.php'; // Archivo de configuración de la base de datos
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {    
+    if (isset($_POST['pagar'])) {
+        $id_reservacion = $_POST['id_reservacion'];
+        $pagar = $_POST['pagar'];
+
+        // Obtener el total actual y el total cambiado
+        $query_total = "SELECT Total, TotalCambiado FROM reservacion WHERE ID_Reservacion = $id_reservacion";
+        $result_total = $conn->query($query_total);
+
+        if ($result_total->num_rows > 0) {
+            $row = $result_total->fetch_assoc();
+            $total = $row['Total'];
+            $total_cambiado = $row['TotalCambiado'];
+
+            // Restar el monto pagado a TotalCambiado
+            $total_cambiado -= $pagar;
+
+            // Actualizar el TotalCambiado en la base de datos
+            $sql_actualizar_total_cambiado = "UPDATE reservacion SET TotalCambiado = $total_cambiado WHERE ID_Reservacion = $id_reservacion";
+
+            if ($conn->query($sql_actualizar_total_cambiado) === TRUE) {
+                echo "<script>
+                        alert('Se ha pagado correctamente.');
+                        window.location.href='../html/employee_page.php';
+                      </script>";
+                exit();
+            } else {
+                echo "Error al actualizar el TotalCambiado: " . $conn->error;
+            }
+        } else {
+            echo "No se encontraron resultados para la reservación con ID: $id_reservacion";
+        }
+    }
+
     if (isset($_POST['modificar_cita'])) {
         $id_reservacion_a_modificar = $_POST['id_reservacion'];
         $nombre_cliente = $_POST['nombre_cliente'];
@@ -17,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fecha_reservacion = $_POST['fecha_reservacion'];
         $hora_inicio = $_POST['hora_inicio'];
         $hora_final = $_POST['hora_final'];
-        $anticipo = $_POST['anticipo'];
 
         // Obtener la información actual de la reserva para comparar
         $query_get_info = "SELECT Fecha_Reserva, Tipo_Reserva FROM reservacion WHERE ID_Reservacion = $id_reservacion_a_modificar";
@@ -30,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Verificar si la fecha o el tipo han cambiado
             if ($fecha_actual !== $fecha_reservacion || $tipo_actual !== $tipo_reserva) {
-                // Realizar la verificación si la fecha o el tipo han cambiado
+                // Realizar la verificación si la fecha, el tipo o el anticipo han cambiado
                 $sql_verificar_reserva = "SELECT ID_Reservacion FROM reservacion WHERE Fecha_Reserva = '$fecha_reservacion' AND Tipo_Reserva = '$tipo_reserva'";
                 $result_verificar = $conn->query($sql_verificar_reserva);
 
@@ -57,11 +89,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $diferencia = $hora_inicio_dt->diff($hora_final_dt);
             $duracion = $diferencia->h; // Obtener la diferencia solo en horas
 
-            // Actualizar la tabla reservacion con la duración en horas
+            // Actualizar la tabla reservacion con la duración en horas y el anticipo
             $sql_update_reservacion = "UPDATE reservacion 
-                                       SET Fecha_Reserva='$fecha_reservacion', Tipo_Reserva='$tipo_reserva', Anticipo='$anticipo',Hora_Inicio='$hora_inicio', Hora_Finalizado='$hora_final', Duracion='$duracion'
-                                       WHERE ID_Reservacion=$id_reservacion_a_modificar";
+                           SET Fecha_Reserva='$fecha_reservacion', Tipo_Reserva='$tipo_reserva', Hora_Inicio='$hora_inicio', Hora_Finalizado='$hora_final', Duracion='$duracion'
+                           WHERE ID_Reservacion=$id_reservacion_a_modificar";
             $conn->query($sql_update_reservacion);
+
 
             // Actualizar la tabla cliente si se desea cambiar el teléfono
             $sql_update_cliente = "UPDATE cliente 
@@ -75,12 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                    SET c.Nombre='$nombre_cliente', c.Apellido_Paterno='$apellido_paterno', c.Apellido_Materno='$apellido_materno'
                                    WHERE c.ID_Cliente=(SELECT ID_Cliente FROM reservacion WHERE ID_Reservacion=$id_reservacion_a_modificar)";
             $conn->query($sql_update_usuario);
-
-            echo "<script>
-                    alert('Modificación exitosa');
-                    window.location.href='../html/employee_page.php';
-                  </script>";
-            exit();
         }
     }
 }

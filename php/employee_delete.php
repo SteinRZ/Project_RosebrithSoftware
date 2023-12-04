@@ -11,12 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_cita'])) {
     if ($conn->query($sql_eliminar_reservacion) === TRUE) {
         echo "<script>
                 alert('Reservación eliminada exitosamente');
-                window.location.href = '../html/new_employee_page.php';
+                window.location.href = '../html/employee_page.php';
               </script>";
     } else {
         echo "<script>
                 alert('Error al eliminar la reservación: " . $conn->error . "');
-                window.location.href = '../html/new_employee_page.php';
+                window.location.href = '../html/employee_page.php';
               </script>";
     }
 

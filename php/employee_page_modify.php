@@ -35,7 +35,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../html/employee_page.php">
-            <div class="sidebar-brand-icon rotate-n-15">
+            <div class="sidebar-brand-icon">
                         <i class="fas fa-droplet"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Gestión Rosebrith</div>
@@ -111,7 +111,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../php/logout.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cerrar Sesión
                                 </a>
@@ -171,8 +171,11 @@
                             <h4>Hora de Finalización:</h4>
                             <input type="time" name="hora_final" value="<?php echo isset($hora_finalizado) ? htmlspecialchars($hora_finalizado) : ''; ?>" required>
                             <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Anticipo:</h4>
-                            <input type="text" name="anticipo" value="<?php echo isset($anticipo) ? htmlspecialchars($anticipo) : ''; ?>" required>
+                            <h4>Total a Pagar:</h4>
+                            <input type="text" name="total" value="<?php echo isset($total_cambiado) ? htmlspecialchars($total_cambiado) : ''; ?>" readonly>
+                            <hr class="sidebar-divider d-none d-md-block">
+                            <h4>Pagar:</h4>
+                            <input type="text" name="pagar" required>
                             <hr class="sidebar-divider d-none d-md-block">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Modificar</button>
                             <!-- Modal -->
@@ -232,7 +235,7 @@
                 <div class="modal-body">¿Estas seguro de cerrar la sesión?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="../html/login.php">Salir</a>
+                    <a class="btn btn-primary" href="../php/logout.php">Salir</a>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Realizar la inserción en la tabla usuario (cliente)
         $sql_usuario = "INSERT INTO usuario (ID_Usuario, Correo, Contraseña, Rol, Fecha_Creacion) 
-                        VALUES (DEFAULT, '$correo', 'contrasena_generica', 'cliente', NOW())";
+                        VALUES (DEFAULT, '$correo', '$apellido_paterno', 'cliente', NOW())";
         $conn->query($sql_usuario);
         $id_usuario = $conn->insert_id; // Obtener el ID del usuario insertado
 

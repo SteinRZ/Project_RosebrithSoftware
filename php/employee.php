@@ -27,7 +27,7 @@ if (isset($_SESSION['id_usuario'])) {
         // Obtener las reservaciones según el área del empleado, incluyendo duración y hora final
         $sql_reservaciones = "SELECT r.ID_Reservacion, r.Fecha_Reserva, r.Tipo_Reserva, r.Anticipo, r.Comentario,
                                     c.Nombre AS NombreCliente, c.Apellido_Paterno AS ApellidoCliente,
-                                    r.Hora_Inicio, r.Hora_Finalizado, r.Duracion
+                                    r.Hora_Inicio, r.Hora_Finalizado, r.Duracion, r.Total, r.TotalCambiado
                             FROM reservacion r
                             INNER JOIN cliente c ON r.ID_Cliente = c.ID_Cliente
                             WHERE UPPER(r.Tipo_Reserva) = UPPER('$area')";

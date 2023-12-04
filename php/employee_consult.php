@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener el ID de la reservación
     $id_reservacion = $_POST['id_reservacion'];
 
-    $query_reservacion = "SELECT c.ID_Cliente, c.Nombre AS nombre_cliente, c.Apellido_Paterno, c.Apellido_Materno, c.Telefono, r.Fecha_Reserva, r.Tipo_Reserva, r.Anticipo, r.Hora_Inicio, r.Hora_Finalizado, r.Duracion
+    $query_reservacion = "SELECT c.ID_Cliente, c.Nombre AS nombre_cliente, c.Apellido_Paterno, c.Apellido_Materno, c.Telefono, r.Fecha_Reserva, r.Tipo_Reserva, r.Anticipo, r.Hora_Inicio, r.Hora_Finalizado, r.Duracion,r. Total, r.TotalCambiado
     FROM reservacion r
     INNER JOIN cliente c ON r.ID_Cliente = c.ID_Cliente
     INNER JOIN usuario u ON c.ID_Usuario = u.ID_Usuario
@@ -43,9 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hora_finalizado = $row['Hora_Finalizado'];
         $anticipo = $row['Anticipo'];
         $duracion = $row['Duracion'];
+        $total = $row['Total'];
+        $total_cambiado=$row['TotalCambiado'];
     } else {
         echo "No se encontraron resultados para la reservación con ID: $id_reservacion";
     }
+    
 }
 
 // Cerrar la conexión a la base de datos
