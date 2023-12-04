@@ -149,6 +149,7 @@
                             <hr class="sidebar-divider d-none d-md-block">
                             <h4>Tipo de Reservacion:</h4>
                             <select id="tipo_reserva" name="tipo_reserva" required>
+                                <option value="" disabled selected>Elegir el tipo de reserva</option>
                                 <option value="Alberca">Alberca</option>
                                 <option value="Salón">Salón</option>
                                 <option value="Ambos">Ambos</option>

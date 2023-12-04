@@ -7,39 +7,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 include 'db_config.php'; // Archivo de configuración de la base de datos
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {    
-    if (isset($_POST['pagar'])) {
-        $id_reservacion = $_POST['id_reservacion'];
-        $pagar = $_POST['pagar'];
-
-        // Obtener el total actual y el total cambiado
-        $query_total = "SELECT Total, TotalCambiado FROM reservacion WHERE ID_Reservacion = $id_reservacion";
-        $result_total = $conn->query($query_total);
-
-        if ($result_total->num_rows > 0) {
-            $row = $result_total->fetch_assoc();
-            $total = $row['Total'];
-            $total_cambiado = $row['TotalCambiado'];
-
-            // Restar el monto pagado a TotalCambiado
-            $total_cambiado -= $pagar;
-
-            // Actualizar el TotalCambiado en la base de datos
-            $sql_actualizar_total_cambiado = "UPDATE reservacion SET TotalCambiado = $total_cambiado WHERE ID_Reservacion = $id_reservacion";
-
-            if ($conn->query($sql_actualizar_total_cambiado) === TRUE) {
-                echo "<script>
-                        alert('Se ha pagado correctamente.');
-                        window.location.href='../html/employee_page.php';
-                      </script>";
-                exit();
-            } else {
-                echo "Error al actualizar el TotalCambiado: " . $conn->error;
-            }
-        } else {
-            echo "No se encontraron resultados para la reservación con ID: $id_reservacion";
-        }
-    }
-
     if (isset($_POST['modificar_cita'])) {
         $id_reservacion_a_modificar = $_POST['id_reservacion'];
         $nombre_cliente = $_POST['nombre_cliente'];
@@ -51,32 +18,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $hora_inicio = $_POST['hora_inicio'];
         $hora_final = $_POST['hora_final'];
 
-        // Obtener la información actual de la reserva para comparar
-        $query_get_info = "SELECT Fecha_Reserva, Tipo_Reserva FROM reservacion WHERE ID_Reservacion = $id_reservacion_a_modificar";
+        // Obtener la información actual de la reserva para comparar la fecha
+        $query_get_info = "SELECT Fecha_Reserva FROM reservacion WHERE ID_Reservacion = $id_reservacion_a_modificar";
         $result_info = $conn->query($query_get_info);
 
         if ($result_info->num_rows > 0) {
             $row_info = $result_info->fetch_assoc();
             $fecha_actual = $row_info['Fecha_Reserva'];
-            $tipo_actual = $row_info['Tipo_Reserva'];
 
-            // Verificar si la fecha o el tipo han cambiado
-            if ($fecha_actual !== $fecha_reservacion || $tipo_actual !== $tipo_reserva) {
-                // Realizar la verificación si la fecha, el tipo o el anticipo han cambiado
-                $sql_verificar_reserva = "SELECT ID_Reservacion FROM reservacion WHERE Fecha_Reserva = '$fecha_reservacion' AND Tipo_Reserva = '$tipo_reserva'";
+            // Verificar si la fecha ha sido modificada
+            if ($fecha_actual !== $fecha_reservacion) {
+                // Verificar si la fecha está ocupada independientemente del tipo de reserva
+                $sql_verificar_reserva = "SELECT ID_Reservacion FROM reservacion WHERE Fecha_Reserva = '$fecha_reservacion'";
                 $result_verificar = $conn->query($sql_verificar_reserva);
 
-                if ($result_verificar->num_rows > 0 && $tipo_reserva !== 'Ambos') {
-                    // Si ya existe una reserva para la fecha y tipo seleccionados, mostrar una alerta
+                if ($result_verificar->num_rows > 0) {
+                    // Si ya existe una reserva para la fecha seleccionada, mostrar una alerta
                     echo "<script>
-                            alert('No se puede realizar la reserva. La fecha o tipo de reserva ya está ocupada.');
-                            window.location.href='../html/employee_page.php';
-                          </script>";
-                    exit();
-                } elseif ($result_verificar->num_rows > 0 && $tipo_reserva === 'Ambos') {
-                    // Si el tipo de reserva es "Ambos" y ya existe una reserva para esa fecha, mostrar una alerta
-                    echo "<script>
-                            alert('No se puede realizar la reserva. La fecha ya está ocupada para el tipo de reserva Ambos.');
+                            alert('No se puede realizar la reserva. La fecha ya está ocupada.');
                             window.location.href='../html/employee_page.php';
                           </script>";
                     exit();
@@ -95,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                            WHERE ID_Reservacion=$id_reservacion_a_modificar";
             $conn->query($sql_update_reservacion);
 
-
             // Actualizar la tabla cliente si se desea cambiar el teléfono
             $sql_update_cliente = "UPDATE cliente 
                                     SET Telefono='$telefono_cliente'
@@ -108,8 +66,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                    SET c.Nombre='$nombre_cliente', c.Apellido_Paterno='$apellido_paterno', c.Apellido_Materno='$apellido_materno'
                                    WHERE c.ID_Cliente=(SELECT ID_Cliente FROM reservacion WHERE ID_Reservacion=$id_reservacion_a_modificar)";
             $conn->query($sql_update_usuario);
+
+            // Mostrar alerta de modificación exitosa
+            echo "<script>
+                    alert('La reserva ha sido modificada exitosamente.');
+                    window.location.href='../html/employee_page.php';
+                  </script>";
+            exit();
         }
     }
 }
+
 $conn->close(); // Cerrar la conexión a la base de datos
 ?>

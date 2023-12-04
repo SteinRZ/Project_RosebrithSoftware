@@ -11,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tipo_reserva = $_POST['tipo_reserva'];
         $anticipo = $_POST['anticipo'];
 
-        // Verificar si ya existe una reserva con la misma fecha y tipo de reserva
-        $sql_verificar_reserva = "SELECT ID_Reservacion FROM reservacion WHERE Fecha_Reserva = '$fecha_reservacion' AND Tipo_Reserva = '$tipo_reserva'";
+        // Verificar si ya existe una reserva con la misma fecha
+        $sql_verificar_reserva = "SELECT ID_Reservacion FROM reservacion WHERE Fecha_Reserva = '$fecha_reservacion'";
         $result_verificar = $conn->query($sql_verificar_reserva);
 
         if ($result_verificar->num_rows > 0 || $tipo_reserva === 'Ambos') {
-            // Si ya existe una reserva para la fecha y tipo seleccionados o si el tipo de reserva es "Ambos", mostrar una alerta
+            // Si ya existe una reserva para la fecha seleccionada o si el tipo de reserva es "Ambos", mostrar una alerta
             echo "<script>
-                    alert('No se puede realizar la reserva. La fecha o tipo de reserva ya está ocupada.');
+                    alert('No se puede realizar la reserva. La fecha ya está ocupada.');
                     window.location.href='../html/employee_page.php';
                   </script>";
             exit();
@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->query($sql_reservacion);
         $id_reservacion = $conn->insert_id; // Obtener el ID de la reservación insertada
 
+        // Mostrar alerta de reserva exitosa
         echo "<script>
                 alert('Se ha agregado la reserva correctamente.');
                 window.location.href='../html/employee_page.php';

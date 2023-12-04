@@ -142,36 +142,28 @@
                             include '../php/employee_consult.php';
                         ?>
                         <h4>ID del Cliente:</h4>
-                            <select id="id_cliente" name="id_cliente" required>
-                                <?php 
-                                if ($result_clientes && $result_clientes->num_rows > 0) {
-                                    while ($row = $result_clientes->fetch_assoc()) {
-                                        echo "<option value='" . $row['ID_Cliente'] . "'>" . $row['ID_Cliente'] . "</option>";
-                                    }
-                                } 
-                                ?>
-                            </select>
+                        <select id="id_cliente" name="id_cliente" required>
+                            <option value="" selected disabled>Selecciona el nombre del cliente</option>
+                            <?php 
+                            if ($result_clientes && $result_clientes->num_rows > 0) {
+                                while ($row = $result_clientes->fetch_assoc()) {
+                                    echo "<option value='" . $row['ID_Cliente'] . "'>" . $row['Nombre'] . "</option>";
+                                }
+                            } 
+                            ?>
+                        </select>
                             <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Nombre del Cliente:</h4>
-                            <input type="text" id="nombre_cliente" name="nombre_cliente" readonly>
-
-                            <script>
-                            document.getElementById('id_cliente').addEventListener('change', function() {
-                                var selectedClientId = this.value;
-
-                                var xhttp = new XMLHttpRequest();
-                                xhttp.onreadystatechange = function() {
-                                    if (this.readyState == 4 && this.status == 200) {
-                                        document.getElementById('nombre_cliente').value = this.responseText;
-                                    }
-                                };
-                                xhttp.open('GET', '../php/get_client_name.php?id=' + selectedClientId, true);
-                                xhttp.send();
-                            });
-                            </script>
+                            <h4>Apellido Paterno del Cliente:</h4>
+                            <script src="../js/lastname.js"></script>
+                            <input type="text" id="apellido_paterno" name="apellido_paterno" readonly>                   
+                            <hr class="sidebar-divider d-none d-md-block">
+                            <h4>Apellido Materno del Cliente:</h4>
+                            <script src="../js/second_lastname.js"></script>
+                            <input type="text" id="apellido_materno" name="apellido_materno" readonly>
                             <hr class="sidebar-divider d-none d-md-block">
                             <h4>Tipo de Reservacion:</h4>
                             <select id="tipo_reserva" name="tipo_reserva" required>
+                                <option value="" disabled selected>Elegir el tipo de reserva</option>
                                 <option value="Alberca">Alberca</option>
                                 <option value="Salón">Salón</option>
                                 <option value="Ambos">Ambos</option>

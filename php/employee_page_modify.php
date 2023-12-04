@@ -60,8 +60,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../php/employee_page_add">Cliente Nuevo</a>
-                        <a class="collapse-item" href="../php/employee_page_add_existing">Cliente Existente</a>
+                        <a class="collapse-item" href="../php/employee_page_add.php">Cliente Nuevo</a>
+                        <a class="collapse-item" href="../php/employee_page_add_existing.php">Cliente Existente</a>
                     </div>
                 </div>
             </li>
@@ -127,7 +127,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Agendar una Cita</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Modificar una Cita</h1>
                     <p class="mb-4">Modifica una cita de un cliente determinado. Recuerda que si estas en una área determinada y lo modificas a otra área no te aparecera la reserva.</p>
                     <p class="mr-4">El área que administras es: <b><?php echo $area; ?></b></p>
 
@@ -137,7 +137,6 @@
                             <h6 class="m-0 font-weight-bold text-primary">Reservaciones de <?php echo $area; ?> </h6>
                         </div>
                         <?php
-                    // Incluir el archivo donde se obtiene la información del empleado
                     include '../php/employee_consult.php';
                         ?>
                         <center>
@@ -154,6 +153,7 @@
                             <hr class="sidebar-divider d-none d-md-block">
                             <h4>Tipo de Reservacion:</h4>
                             <select id="tipo_reserva" name="tipo_reserva" required>
+                                <option value="" disabled selected>Elegir el tipo de reserva</option>
                                 <option value="Alberca" <?php echo ($tipo_reserva === 'Alberca') ? 'selected' : ''; ?>>Alberca</option>
                                 <option value="Salón" <?php echo ($tipo_reserva === 'Salón') ? 'selected' : ''; ?>>Salón</option>
                                 <option value="Ambos" <?php echo ($tipo_reserva === 'Ambos') ? 'selected' : ''; ?>>Ambos</option>
@@ -170,12 +170,6 @@
                             <hr class="sidebar-divider d-none d-md-block">
                             <h4>Hora de Finalización:</h4>
                             <input type="time" name="hora_final" value="<?php echo isset($hora_finalizado) ? htmlspecialchars($hora_finalizado) : ''; ?>" required>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Total a Pagar:</h4>
-                            <input type="text" name="total" value="<?php echo isset($total_cambiado) ? htmlspecialchars($total_cambiado) : ''; ?>" readonly>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Pagar:</h4>
-                            <input type="text" name="pagar" required>
                             <hr class="sidebar-divider d-none d-md-block">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Modificar</button>
                             <!-- Modal -->

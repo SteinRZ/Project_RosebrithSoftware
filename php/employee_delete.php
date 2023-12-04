@@ -1,5 +1,8 @@
 <?php
-session_start();
+// Iniciar sesión si no está activa
+if (session_status() !== PHP_SESSION_ACTIVE) {
+  session_start();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['eliminar_cita'])) {
     include 'db_config.php';
