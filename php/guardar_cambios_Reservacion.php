@@ -1,3 +1,72 @@
+<?php
+session_start();
+
+// CONFIGURACION DE LA BASE DE DATOS
+include("..\php\db_config.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Recupera los datos del formulario para Reservacion
+    $id_reservacion = $_POST['ID_Reservacion'];
+    $fechas_reserva = $_POST['Fecha_Reserva'];
+    $tipos_reserva = $_POST['Tipo_Reserva'];
+    $anticipos = $_POST['Anticipo'];
+    $horas_inicio = $_POST['Hora_Inicio'];
+    $horas_finalizado = $_POST['Hora_Finalizado'];
+    $duracion = $_POST['Duracion'];
+    $totales = $_POST['Total'];
+    $comentarios = $_POST['Comentario'];
+
+    // Verifica si $id_reservacion es un array antes de intentar contar sus elementos
+    if (is_array($id_reservacion)) {
+        // Recorre los arreglos para actualizar cada registro
+        for ($i = 0; $i < count($id_reservacion); $i++) {
+            $id = $id_reservacion[$i];
+            $fecha_reserva = $fechas_reserva[$i];
+            $tipo_reserva = $tipos_reserva[$i];
+            $anticipo = $anticipos[$i];
+            $hora_inicio = $horas_inicio[$i];
+            $hora_finalizado = $horas_finalizado[$i];
+            $duracion_reserva = $duracion[$i];
+            $total = $totales[$i];
+            $comentario = $comentarios[$i];
+
+            // Actualiza la tabla Reservacion usando declaraciones preparadas
+            $stmt = $conn->prepare("UPDATE Reservacion 
+                                   SET Fecha_Reserva=?, Tipo_Reserva=?, Anticipo=?, 
+                                       Hora_Inicio=?, Hora_Finalizado=?, Duracion=?, 
+                                       Total=?, Comentario=? 
+                                   WHERE ID_Reservacion=?");
+            $stmt->bind_param("ssssssdsi", $fecha_reserva, $tipo_reserva, $anticipo, 
+                              $hora_inicio, $hora_finalizado, $duracion_reserva, 
+                              $total, $comentario, $id);
+            $stmt->execute();
+
+            // Verifica si hubo un error
+            if ($stmt->error) {
+                // Puedes registrar el error en un archivo de registro o mostrar un mensaje en la página
+                echo "Error al actualizar la reservación ID $id: " . $stmt->error;
+                // Detiene el bucle si hay un error
+                break;
+            }
+
+            $stmt->close();
+        }
+
+        // Cierra la conexión después de terminar de ejecutar todas las consultas
+        $conn->close();
+
+        // Redirecciona después de actualizar todos los registros
+        header("Location: ../html/admin_page.php");
+        exit; // Asegura que el script se detenga después de la redirección
+    } else {
+        echo "<script>
+            alert('Error: El ID de la reservación no es un array válido.');
+            window.location.href='../html/admin_page.php';
+            </script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,40 +75,12 @@
 </head>
 <body>
 
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+<!-- Botón de Regresar -->
+<a href="../html/admin_page.php">Regresar</a>
 
-// CONFIGURACION DE LA BASE DE DATOS
-include("..\php\db_config.php");
+</body>
+</html>
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupera los datos del formulario para Reservacion
-    $id_reservacion = $_POST['ID_Reservacion'];
-    $fecha_reserva = $_POST['Fecha_Reserva'];
-    $tipo_reserva = $_POST['Tipo_Reserva'];
-    $anticipo = $_POST['Anticipo'];
-    $comentario = $_POST['Comentario'];
-
-    // Actualiza la tabla Reservacion
-    $sql_update_reservacion = "UPDATE Reservacion SET Fecha_Reserva='$fecha_reserva', Tipo_Reserva='$tipo_reserva', Anticipo='$anticipo', Comentario='$comentario' WHERE ID_Reservacion=$id_reservacion";
-    if ($conn->query($sql_update_reservacion) === TRUE) {
-        echo "<script>
-        alert('Se han guardado los cambios de la Reservación con exito.');
-        window.location.href='../html/admin_page.php';
-      </script>";
-    } else {
-        echo "<script>
-        alert('Error al guardar los de la Reservación cambios.');
-        window.location.href='../html/admin_page.php';
-      </script>" . $conn->error;
-    }
-}
-
-// CERRAR CONEXION
-$conn->close();
-?>
 
 <!-- Botón de Regresar -->
 <a href="../html/admin_page.php">Regresar</a>

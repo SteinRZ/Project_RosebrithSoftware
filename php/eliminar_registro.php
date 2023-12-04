@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ejecuta la consulta
     if ($conn->query($sql_delete) === TRUE) {
         echo "<script>
-        alert('Registro eliminado correctamente.');
+        
         window.location.href='../html/admin_page.php';
       </script>";
     } else {

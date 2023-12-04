@@ -27,6 +27,7 @@
 <?php
     // Incluir el archivo donde se obtiene la información del empleado
     include '../php/employee.php';
+    
 ?>
     <!-- Page Wrapper -->
     <div id="wrapper">

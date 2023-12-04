@@ -1,44 +1,47 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Guardar Cambios Cliente</title>
-</head>
-<body>
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-// CONFIGURACION DE LA BASE DE DATOS
-include ("../php/db_config.php");
+// Archivo registrar_empleado.php
+include 'db_config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_usuario = $_POST['id_usuario'];
-    $area = $_POST['area'];
+    // Recupera los datos del formulario para Empleado
+    $nombre = $_POST['name'];
+    $apellidoPaterno = $_POST['apellidoP'];
+    $apellidoMaterno = $_POST['apellidoM'];
+    $correo = $_POST['email'];
     $telefono = $_POST['telefono'];
+    $area = $_POST['area'];
     $sueldo = $_POST['sueldo'];
+    $contrasena = $_POST['pswd'];
 
-    // Consulta preparada para prevenir inyecciones SQL
-    $sql_insert = $conn->prepare("INSERT INTO Empleado (ID_Usuario, Area, Telefono, Sueldo) VALUES (?, ?, ?, ?)");
-    $sql_insert->bind_param("sssd", $id_usuario, $area, $telefono, $sueldo);
+    // Obtiene la fecha actual
+    $fechaCreacion = date("Y-m-d");
 
-    if ($sql_insert->execute()) {
-        echo "Empleado registrado correctamente.";
+    // Inserta un nuevo registro en la tabla Usuario
+    $sqlInsertUsuario = "INSERT INTO usuario (Correo, Contraseña, Rol, Fecha_Creacion)
+                         VALUES ('$correo', '$contrasena', 'empleado', '$fechaCreacion')";
+
+    if ($conn->query($sqlInsertUsuario)) {
+        // Obtiene el ID del usuario recién insertado
+        $idUsuario = $conn->insert_id;
+
+        // Inserta un nuevo registro en la tabla Empleado asociado al usuario
+        $sqlInsertEmpleado = "INSERT INTO empleado (ID_Usuario, Nombre, Apellido_Paterno, Apellido_Materno, Area, Telefono, Sueldo, Fecha_Creacion)
+                              VALUES ('$idUsuario', '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$area', '$telefono', '$sueldo', '$fechaCreacion')";
+
+        if ($conn->query($sqlInsertEmpleado) === TRUE) {
+            echo "<script>
+                
+                window.location.href='../html/admin_page.php'; // Cambia esto a la página que desees
+            </script>";
+        } else {
+            echo "Error al registrar el empleado: " . $conn->error;
+        }
     } else {
-        echo "Error al registrar empleado: " . $sql_insert->error;
+        echo "Error al registrar el usuario del empleado: " . $conn->error; // Error mostrado
     }
 
-    // Cerrar la consulta preparada
-    $sql_insert->close();
+    // Cierra la conexión
+    $conn->close();
 }
 
-// CERRAR CONEXION
-$conn->close();
 ?>
-
-<!-- Botón de Regresar -->
-<a href="../html/admin_page.php">Regresar</a>
-
-</body>
-</html>
