@@ -37,7 +37,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-            <div class="sidebar-brand-icon rotate-n-15">
+            <div class="sidebar-brand-icon">
                     <i class="fas fa-droplet"></i>
             </div>
                 <div class="sidebar-brand-text mx-3">Gestión Rosebrith</div>
@@ -113,7 +113,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../php/logout.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cerrar Sesión
                                 </a>
@@ -151,6 +151,8 @@
                                             <th>Hora de Inicio</th>
                                             <th>Hora de Finalización</th>
                                             <th>Duración</th>
+                                            <th>Costo</th>
+                                            <th>Total a Pagar</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -164,6 +166,8 @@
                                             <th>Hora de Inicio</th>
                                             <th>Hora de Finalización</th>
                                             <th>Duración</th>
+                                            <th>Costo</th>
+                                            <th>Total a Pagar</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </tfoot>
@@ -180,39 +184,74 @@
                                                         <td><?php echo $fila_reserva['Hora_Inicio']; ?></td>
                                                         <td><?php echo $fila_reserva['Hora_Finalizado']; ?></td>
                                                         <td><?php echo $fila_reserva['Duracion']; ?></td>
+                                                        <td><?php echo $fila_reserva['Total']; ?></td>
+                                                        <td><?php echo $fila_reserva['TotalCambiado']; ?></td>
                                                         <td>
+                                                            <div class="d-flex justify-content-between">
                                                             <form method="post" action="../php/employee_delete.php">
-                                                            <input type="hidden" name="id_reservacion" value="<?php echo $fila_reserva['ID_Reservacion']; ?>">
-                                                            <button type="button" class="btn btn-secondary btn-circle" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-fw fa-user-minus"></i></button>
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                                    <div class="modal-dialog" role="document">
-                                                                                        <div class="modal-content">
-                                                                                        <div class="modal-header">
-                                                                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente</h5>
-                                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                            <span aria-hidden="true">&times;</span>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                        <div class="modal-body">
-                                                                                            <h6>¿Estas seguro de eliminar los datos del cliente?</h6>
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                                                            <button type="submit" class="btn btn-danger" name="eliminar_cita">Eliminar</button>
-                                                                                        </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                            </div>
-                                                            <!---------END MODAL-------------->
+                                                                <input type="hidden" name="id_reservacion" value="<?php echo $fila_reserva['ID_Reservacion']; ?>">
+                                                                <button type="button" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#exampleModal<?php echo $fila_reserva['ID_Reservacion']; ?>"><i class="fas fa-fw fa-user-minus"></i></button>
+                                                                <!-- Delete Modal -->
+                                                                <div class="modal fade" id="exampleModal<?php echo $fila_reserva['ID_Reservacion']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="exampleModalLabel">Eliminar Cliente</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <h6>¿Estás seguro de eliminar los datos del cliente?</h6>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                <button type="submit" class="btn btn-danger" name="eliminar_cita">Eliminar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </form>
                                                             <!-- Botón para gestionar la reserva -->
                                                             <form method="post" action="../php/employee_page_modify.php">
                                                                 <input type="hidden" name="id_reservacion" value="<?php echo htmlspecialchars($fila_reserva['ID_Reservacion']); ?>">
                                                                 <input type="hidden" name="manage_reservation" value="true">
-                                                                <button type="submit" class="btn btn-secondary btn-circle"> <i class="fas fa-fw fa-user-pen"></i>
+                                                                <button type="submit" class="btn btn-primary btn-circle"> <i class="fas fa-fw fa-user-pen"></i>
                                                             </button>
                                                             </form>
+                                                            <!----------Boton para Pagar o Abonar la reserva---------------->
+                                                            <form method="post" action="../php/employee_pay.php">
+                                                                <input type="hidden" name="id_reservacion" value="<?php echo $fila_reserva['ID_Reservacion']; ?>">
+                                                                <button type="button" class="btn btn-success btn-circle" data-toggle="modal" data-target="#exampleModalCenter<?php echo $fila_reserva['ID_Reservacion']; ?>"><i class="fas fa-fw fa-money-bill"></i></button>
+                                                                <!-- Pay Modal -->
+                                                                <div class="modal fade" id="exampleModalCenter<?php echo $fila_reserva['ID_Reservacion']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h5 class="modal-title" id="exampleModalCenterTitle">Pagar/Abonar reservación</h5>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <center>
+                                                                                    <h4>Total a Pagar:</h4>
+                                                                                    <input type="text" name="total" value="<?php echo $fila_reserva['TotalCambiado']?>" readonly>
+                                                                                    <hr class="sidebar-divider d-none d-md-block">
+                                                                                    <h4>Pagar:</h4>
+                                                                                    <input type="text" name="pagar" required>
+                                                                                    <hr class="sidebar-divider d-none d-md-block">
+                                                                                </center>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                <button type="submit" class="btn btn-success" name="pagar_cita">Pagar/Abonar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     <?php
@@ -247,7 +286,7 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-        
+
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">

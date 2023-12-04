@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "No se encontraron resultados para la reservación con ID: $id_reservacion";
     }
+    
 }
 
 // Cerrar la conexión a la base de datos

@@ -35,7 +35,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../html/employee_page.php">
-            <div class="sidebar-brand-icon rotate-n-15">
+            <div class="sidebar-brand-icon">
                         <i class="fas fa-droplet"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Gestión Rosebrith</div>
@@ -60,8 +60,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="../php/employee_page_add">Cliente Nuevo</a>
-                        <a class="collapse-item" href="../php/employee_page_add_existing">Cliente Existente</a>
+                        <a class="collapse-item" href="../php/employee_page_add.php">Cliente Nuevo</a>
+                        <a class="collapse-item" href="../php/employee_page_add_existing.php">Cliente Existente</a>
                     </div>
                 </div>
             </li>
@@ -111,7 +111,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../php/logout.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cerrar Sesión
                                 </a>
@@ -127,7 +127,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Agendar una Cita</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Modificar una Cita</h1>
                     <p class="mb-4">Modifica una cita de un cliente determinado. Recuerda que si estas en una área determinada y lo modificas a otra área no te aparecera la reserva.</p>
                     <p class="mr-4">El área que administras es: <b><?php echo $area; ?></b></p>
 
@@ -137,7 +137,6 @@
                             <h6 class="m-0 font-weight-bold text-primary">Reservaciones de <?php echo $area; ?> </h6>
                         </div>
                         <?php
-                    // Incluir el archivo donde se obtiene la información del empleado
                     include '../php/employee_consult.php';
                         ?>
                         <center>
@@ -154,6 +153,7 @@
                             <hr class="sidebar-divider d-none d-md-block">
                             <h4>Tipo de Reservacion:</h4>
                             <select id="tipo_reserva" name="tipo_reserva" required>
+                                <option value="" disabled selected>Elegir el tipo de reserva</option>
                                 <option value="Alberca" <?php echo ($tipo_reserva === 'Alberca') ? 'selected' : ''; ?>>Alberca</option>
                                 <option value="Salón" <?php echo ($tipo_reserva === 'Salón') ? 'selected' : ''; ?>>Salón</option>
                                 <option value="Ambos" <?php echo ($tipo_reserva === 'Ambos') ? 'selected' : ''; ?>>Ambos</option>
@@ -170,9 +170,6 @@
                             <hr class="sidebar-divider d-none d-md-block">
                             <h4>Hora de Finalización:</h4>
                             <input type="time" name="hora_final" value="<?php echo isset($hora_finalizado) ? htmlspecialchars($hora_finalizado) : ''; ?>" required>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Anticipo:</h4>
-                            <input type="text" name="anticipo" value="<?php echo isset($anticipo) ? htmlspecialchars($anticipo) : ''; ?>" required>
                             <hr class="sidebar-divider d-none d-md-block">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Modificar</button>
                             <!-- Modal -->
@@ -232,7 +229,7 @@
                 <div class="modal-body">¿Estas seguro de cerrar la sesión?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="../html/login.php">Salir</a>
+                    <a class="btn btn-primary" href="../php/logout.php">Salir</a>
                 </div>
             </div>
         </div>

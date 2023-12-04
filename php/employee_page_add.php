@@ -36,7 +36,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../html/employee_page.php">
-                <div class="sidebar-brand-icon rotate-n-15">
+                <div class="sidebar-brand-icon">
                         <i class="fas fa-droplet"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Gestión Rosebrith</div>
@@ -149,6 +149,7 @@
                             <hr class="sidebar-divider d-none d-md-block">
                             <h4>Tipo de Reservacion:</h4>
                             <select id="tipo_reserva" name="tipo_reserva" required>
+                                <option value="" disabled selected>Elegir el tipo de reserva</option>
                                 <option value="Alberca">Alberca</option>
                                 <option value="Salón">Salón</option>
                                 <option value="Ambos">Ambos</option>
@@ -206,7 +207,7 @@
                 <div class="modal-body">¿Estas seguro de cerrar la sesión?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="../html/login.php">Salir</a>
+                    <a class="btn btn-primary" href="../php/logout.php">Salir</a>
                 </div>
             </div>
         </div>
