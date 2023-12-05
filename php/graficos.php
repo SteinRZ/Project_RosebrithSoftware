@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // CONFIGURACION DE LA BASE DE DATOS
-include ("..\php\db_config.php");
+include 'db_config.php';
 
 // Funciones de filtrado
 function filterDataByDate($dataArray, $date) {

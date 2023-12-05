@@ -30,18 +30,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($conn->query($sqlInsertEmpleado) === TRUE) {
             echo "<script>
-                
-                window.location.href='../html/admin_page.php'; // Cambia esto a la página que desees
+                alert('Empleado registrado correctamente');
+                window.location.href='../php/admin_table_employee.php'; // Cambia esto a la página que desees
             </script>";
         } else {
             echo "Error al registrar el empleado: " . $conn->error;
         }
     } else {
-        echo "Error al registrar el usuario del empleado: " . $conn->error; // Error mostrado
+        echo "Error al registrar el usuario del empleado: " . $conn->error;
     }
 
     // Cierra la conexión
     $conn->close();
 }
-
 ?>

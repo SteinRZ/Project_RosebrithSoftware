@@ -2,9 +2,9 @@
 session_start();
 
 // CONFIGURACION DE LA BASE DE DATOS
-include("..\php\db_config.php");
+include 'db_config.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['guardar_cliente'])) {
     // Recupera los datos del formulario para Cliente
     $id_cliente = $_POST['ID_Cliente'];
     $nombres = $_POST['Nombre'];
@@ -44,27 +44,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->close();
 
         // Redirecciona después de actualizar todos los registros
-        header("Location: ../html/admin_page.php");
+        echo "<script>
+            alert('Se ha modificado el cliente con éxito.');
+            window.location.href='../php/admin_table_client.php';
+            </script>";
         exit; // Asegura que el script se detenga después de la redirección
     } else {
         echo "<script>
             alert('Error: El ID del cliente no es un array válido.');
-            window.location.href='../html/admin_page.php';
+            window.location.href='../php/admin_table_client.php';
             </script>";
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Guardar Cambios Cliente</title>
-</head>
-<body>
-
-<!-- Botón de Regresar -->
-<a href="../html/admin_page.php">Regresar</a>
-
-</body>
-</html>

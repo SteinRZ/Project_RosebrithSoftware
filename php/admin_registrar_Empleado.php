@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Rosebrith - Empleado</title>
+    <title>Rosebrith - Administrador</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -27,6 +27,7 @@
 <?php
     // Incluir el archivo donde se obtiene la información del empleado
     include '../php/employee.php';
+    include '../php/admin_tables_consult.php';
 ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -35,34 +36,51 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../html/employee_page.php">
-                <div class="sidebar-brand-icon">
-                        <i class="fas fa-droplet"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Gestión Rosebrith</div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../html/admin_page.php">
+            <div class="sidebar-brand-icon">
+                    <i class="fas fa-droplet"></i>
+            </div>
+                <div class="sidebar-brand-text mx-3">Administración Rosebrith</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="../html/employee_page.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tabla de Reservaciones</span></a>
-            </li>
-
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-plus"></i>
-                    <span>Agendar una Cita</span>
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Tablas</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item active" href="#">Cliente Nuevo</a>
-                        <a class="collapse-item" href="../php/employee_page_add_existing.php">Cliente Existente</a>
+                        <a class="collapse-item" href="../html/admin_page.php">Usuarios</a>
+                        <a class="collapse-item " href="../php/admin_table_employee.php">Empleados</a>
+                        <a class="collapse-item " href="../php/admin_table_client.php">Clientes</a>
+                        <a class="collapse-item " href="../php/admin_table_reservation.php">Reservaciones</a>
+                    </div>
+                </div>
+            </li>
+             <!-- Nav Item - Tables -->
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Registrar Empleado</span></a>
+            </li>
+
+            <!-- Nav Item - Chart Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-chart-simple"></i>
+                    <span>Gráficas</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="../php/admin_graphic.php">Grafica de Usuarios</a>
+                        <a class="collapse-item" href="../php/admin_graphic2.php">Grafica de Reservaciones</a>
                     </div>
                 </div>
             </li>
@@ -103,15 +121,15 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $nombre_empleado . ' ' . $apellido_paterno; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
                                 <img class="img-profile rounded-circle"
-                                    src="https://clipground.com/images/client-icon-png-4.png">
+                                    src="https://icon-library.com/images/admin-icon/admin-icon-4.jpg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../php/logout.php" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Cerrar Sesión
                                 </a>
@@ -127,52 +145,52 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Agendar una Cita</h1>
-                    <p class="mb-4">Agenda una cita de un cliente nuevo. Recuerda que si estas en una área determinada y lo agendas en otra área no te aparecera la reserva.</p>
-                    <p class="mr-4">El área que administras es: <b><?php echo $area; ?></b></p>
+                    <h1 class="h3 mb-2 text-gray-800">Registrar un Empleado</h1>
+                    <p class="mb-4">En este formulario podras registrar un empleado nuevo.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Reservaciones de <?php echo $area; ?> </h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Datos del Empleado</h6>
                         </div>
-                        <center>
-                        <form method="post" action="../php/employee_insert.php">
-                            <h4>Nombre del Cliente:</h4>
-                            <input type="text" name="nombre_cliente" required>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Apellido Paterno:</h4>
-                            <input type="text" name="apellido_paterno" required>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Apellido Materno:</h4>
-                            <input type="text" name="apellido_materno" required>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Tipo de Reservacion:</h4>
-                            <select id="tipo_reserva" name="tipo_reserva" required>
-                                <option value="" disabled selected>Elegir el tipo de reserva</option>
-                                <option value="Alberca">Alberca</option>
-                                <option value="Salón">Salón</option>
-                                <option value="Ambos">Ambos</option>
-                            </select>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Teléfono:</h4>
-                            <input type="tel" name="telefono_cliente" required>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Fecha de Reservación:</h4>
-                            <input type="date" name="fecha_reservacion" required>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Hora de Inicio:</h4>
-                            <input type="time" name="hora_inicio" required>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Hora de Finalización:</h4>
-                            <input type="time" name="hora_final" required>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <h4>Anticipo:</h4>
-                            <input type="text" name="anticipo" value="600" readonly>
-                            <hr class="sidebar-divider d-none d-md-block">
-                            <button class="btn btn-info" type="submit" name="agregar_cita">Agregar Cita</button>
-                        </form>
-				        </center>
+                        <div class="card-body">
+                            <center>
+                            <div class="formulario-container">
+                            <form name="registrarempleado" method="post" action="../php/registrar_empleado.php">
+                            <form method="post" action="../php/registrar_empleado.php">
+                                <input type="text" name="name" placeholder="Nombre" required>
+                                <hr class="sidebar-divider d-none d-md-block">
+
+                                <input type="text" name="apellidoP" placeholder="Apellido Paterno" required>
+                                <hr class="sidebar-divider d-none d-md-block">
+
+                                <input type="text" name="apellidoM" placeholder="Apellido Materno" required>
+                                <hr class="sidebar-divider d-none d-md-block">
+
+                                <input type="email" name="email" placeholder="Correo" required>
+                                <hr class="sidebar-divider d-none d-md-block">
+
+                                <input type="tel" name="telefono" placeholder="Telefono" required pattern="[0-9]{10}">
+                                <hr class="sidebar-divider d-none d-md-block">
+
+                                <select id="area" name="area" required>
+                                    <option value="" disabled selected>Elige el área que administrara</option>
+                                    <option value="Alberca">Alberca</option>
+                                    <option value="Salón">Salón</option>
+                                    <option value="Salón">Ambos</option>
+                                </select>
+                                <hr class="sidebar-divider d-none d-md-block">
+
+                                <input type="text" id="sueldo" placeholder="Sueldo" name="sueldo" required>
+                                <hr class="sidebar-divider d-none d-md-block">
+
+                                <input type="password" name="pswd" placeholder="Contraseña" required>
+                                <hr class="sidebar-divider d-none d-md-block">
+
+                                <button class="btn btn-info" type="submit" name="registrar_empleado">Registrar</button>
+                            </form>
+                            </center>
+                            </div>
                         </div>
                     </div>
 
@@ -199,7 +217,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">CerrarSesión</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

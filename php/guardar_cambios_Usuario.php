@@ -2,9 +2,9 @@
 session_start();
 
 // CONFIGURACION DE LA BASE DE DATOS
-include("..\php\db_config.php");
+include 'db_config.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['guardar_usuario'])) {
     // Recupera los datos del formulario para Usuario
     $Id_usuario = $_POST['ID_Usuario'];
     $Correos = $_POST['Correo'];
@@ -38,21 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 
     // Redirecciona después de actualizar todos los registros
-    header("Location: ../html/admin_page.php");
+    echo "<script>
+                alert('Cambios realizados con éxito.');
+                window.location.href='../html/new_admin_page.php';
+              </script>";
     exit; // Asegura que el script se detenga después de la redirección
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Guardar Cambios Usuario</title>
-</head>
-<body>
-
-<!-- Botón de Regresar -->
-<a href="../html/admin_page.php">Regresar</a>
-
-</body>
-</html>

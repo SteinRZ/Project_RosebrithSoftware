@@ -25,8 +25,8 @@
 
 <body id="page-top">
 <?php
-    include '../php/admin_tables_consult.php'
-    
+    include '../php/employee.php';
+    include '../php/admin_tables_consult.php';
 ?>
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -35,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../html/admin_page.php">
             <div class="sidebar-brand-icon">
                     <i class="fas fa-droplet"></i>
             </div>
@@ -46,7 +46,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-table"></i>
@@ -56,7 +56,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="../html/admin_page.php">Usuarios</a>
                         <a class="collapse-item" href="../php/admin_table_employee.php">Empleados</a>
-                        <a class="collapse-item" href="../php/admin_table_client.php">Clientes</a>
+                        <a class="collapse-item active" href="#">Clientes</a>
                         <a class="collapse-item" href="../php/admin_table_reservation.php">Reservaciones</a>
                     </div>
                 </div>
@@ -144,66 +144,71 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tabla de Usuarios</h1>
-                    <p class="mb-4">Se mostraran todos los usuarios registrados y alamacenados en la base de datos.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Tabla de Clientes</h1>
+                    <p class="mb-4">Se mostraran todos los clientes registrados y alamacenados en la base de datos.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Usuarios Registrados</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Clientes Registrados</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            <form action='../php/guardar_cambios_Usuario.php' method='post'>
+                            <form action='../php/guardar_cambios_Cliente.php' method='post'>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Id del Usuario</th>
-                                            <th>Correo</th>
-                                            <th>Contraseña</th>
-                                            <th>Rol</th>
-                                            <th>Fecha de Creación</th>
-                                            <th>Acciones</th>
+                                        <th>ID de Cliente</th>
+                                        <th>ID de Usuario</th>
+                                        <th>Nombre Cliente</th>
+                                        <th>Apellido Paterno</th>
+                                        <th>Apellido Materno</th>
+                                        <th>Telefono</th>
+                                        <th>Fecha Creación</th>
+                                        <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Id del Usuario</th>
-                                            <th>Correo</th>
-                                            <th>Contraseña</th>
-                                            <th>Rol</th>
-                                            <th>Fecha de Creación</th>
-                                            <th>Acciones</th>
+                                        <th>ID de Cliente</th>
+                                        <th>ID de Usuario</th>
+                                        <th>Nombre Cliente</th>
+                                        <th>Apellido Paterno</th>
+                                        <th>Apellido Materno</th>
+                                        <th>Telefono</th>
+                                        <th>Fecha Creación</th>
+                                        <th>Acciones</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                        while ($row = $result_usuario->fetch_assoc()) {
-                                    ?>
+                                        while ($row = $result_cliente->fetch_assoc()) {
+                                        ?>
                                             <tr>
-                                                <td><?php echo "<input type='hidden' name='ID_Usuario[]' value='" . $row['ID_Usuario'] . "'>" . $row['ID_Usuario']; ?></td>
-                                                <td><input type='text' name='Correo[]' value='<?php echo htmlspecialchars($row['Correo'] ?? ''); ?>'></td>
-                                                <td><input type='text' name='Contraseña[]' value='<?php echo htmlspecialchars($row['Contraseña'] ?? ''); ?>'></td>
-                                                <td><input type='text' name='Rol[]' value='<?php echo htmlspecialchars($row['Rol'] ?? ''); ?>'></td>
-                                                <td><input type='text' name='Fecha_Creacion[]' value='<?php echo $row['Fecha_Creacion']; ?>' readonly></td>
+                                                <td><?php echo "<input type='hidden' name='ID_Cliente[]' value='" . $row['ID_Cliente'] . "'>" . $row['ID_Cliente']; ?></td>
+                                                <td><span><?php echo $row['ID_Usuario']; ?></span></td>
+                                                <td><input type='text' name='Nombre[]' value='<?php echo htmlspecialchars($row['Nombre']); ?>'></td>
+                                                <td><input type='text' name='Apellido_Paterno[]' value='<?php echo htmlspecialchars($row['Apellido_Paterno']); ?>'></td>
+                                                <td><input type='text' name='Apellido_Materno[]' value='<?php echo htmlspecialchars($row['Apellido_Materno']); ?>'></td>
+                                                <td><input type='text' name='Telefono[]' value='<?php echo htmlspecialchars($row['Telefono']); ?>'></td>
+                                                <td><?php echo $row['Fecha_Creacion']; ?></td>
                                                 <td>
                                                 <div class="d-flex justify-content-between">
-                                                    <button type="submit" class="btn btn-primary btn-circle" name="guardar_usuario"><i class="fas fa-fw fa-floppy-disk"></i></button>
-                                                    <button type='submit' class="btn btn-danger btn-circle" formaction='../php/admin_eliminar_Usuario.php' name='Usuario' value='<?php echo $row['ID_Usuario']; ?>'><i class="fas fa-fw fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-primary btn-circle" name="guardar_cliente"><i class="fas fa-fw fa-floppy-disk"></i></button>
+                                                    <button type='submit' class="btn btn-danger btn-circle" formaction='../php/admin_eliminar_Cliente.php' name='Cliente' value='<?php echo $row['ID_Cliente']; ?>'><i class="fas fa-fw fa-trash"></i></button>
                                                 </div>
                                                 </td>
-                                                    
                                             </tr>
-                                    <?php
+                                        <?php
                                         }
-                                        if ($result_usuario->num_rows == 0) {
-                                    ?>
+                                        if ($result_cliente->num_rows == 0) {
+                                        ?>
                                             <tr>
-                                                <td colspan="7">No se encontraron usuarios.</td>
+                                                <td colspan="7">No se encontraron clientes.</td>
                                             </tr>
-                                    <?php
+                                        <?php
                                         }
-                                    ?>
+                                        ?>
                                     </tbody>
                                 </table>
                             </form>
