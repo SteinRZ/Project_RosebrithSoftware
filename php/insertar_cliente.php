@@ -10,21 +10,23 @@ $email = $_POST['email'];
 $telefono = $_POST['telefono'];
 $contrasena = $_POST['pswd'];
 
-// Inserta el nuevo cliente en la tabla "usuario"
-$sql = "INSERT INTO usuario (Nombre, Apellido_Paterno, Apellido_Materno, Correo, Contraseña, Rol)
-        VALUES ('$nombre', '$apellidoPaterno', '$apellidoMaterno', '$email', '$contrasena', 'cliente')";
+// Inserta el nuevo usuario en la tabla "usuario"
+$sqlUsuario = "INSERT INTO usuario (Correo, Contraseña, Rol, Fecha_Creacion)
+              VALUES ('$email', '$contrasena', 'cliente', NOW())";
 
-if ($conn->query($sql) === TRUE) {
+if ($conn->query($sqlUsuario) === TRUE) {
     // Obtén el ID del usuario insertado
     $idUsuarioInsertado = $conn->insert_id;
 
-    // Ahora, inserta el nuevo cliente en la tabla "cliente"
-    $sqlCliente = "INSERT INTO cliente (ID_Usuario, Telefono, Deuda) VALUES ('$idUsuarioInsertado', '$telefono' ,10)";
+    // Inserta el nuevo cliente en la tabla "cliente"
+    $sqlCliente = "INSERT INTO cliente (ID_Usuario, Nombre, Apellido_Paterno, Apellido_Materno, Telefono, Fecha_Creacion)
+                  VALUES ('$idUsuarioInsertado', '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$telefono', NOW())";
+
     if ($conn->query($sqlCliente) === TRUE) {
         echo "<script>
         alert('Cliente registrado exitosamente.');
         window.location.href='../html/login.php';
-      </script>";
+        </script>";
     } else {
         echo "Error al registrar el cliente: " . $conn->error;
     }

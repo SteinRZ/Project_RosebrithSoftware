@@ -17,10 +17,6 @@
             <a href="main.php"><img src="../image/main_icon.png" alt="Rosebrith" title="Inicio"></a>
         </div>
         <nav>
-           <ul class="nav__links">
-                <li><a href="services.php">Servicios</a></li>
-                <li><a href="contact_us.php">Contactanos</a></li>
-           </ul>
         </nav>
         <?php include '../php/change_button.php';?>
     </header>

@@ -91,13 +91,13 @@
             <h3>Contactanos</h3>
         </div>
         <p>
-            Telefono: +52 867 --- ----
+            Telefono: +52 867 299 1978
         </p>
         <p>
-            Whatsapp: +52 867 --- ----
+            Whatsapp: +52 867 299 1978
         </p>
         <p>
-            Correo:
+            Correo: rosebrith@outlook.com
         </p>
         <p>
             Donde encontrarnos: Colonia Union del Recuerdo, Calle Recuerdo Ave La Cruz #812

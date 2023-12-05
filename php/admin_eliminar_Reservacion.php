@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Reservacion'])) {
     if ($stmt->affected_rows > 0) {
         echo "<script>
                 alert('La reservación se eliminó correctamente.');
-                window.location.href = '../php/admin_table_reservation.php;
+                window.location.href = '../php/admin_table_reservation.php';
               </script>";
     } else {
         echo "<script>

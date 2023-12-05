@@ -29,17 +29,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $conn->query($sql_cliente);
         $id_cliente = $conn->insert_id; // Obtener el ID del cliente insertado
 
-        // Verificar si ya existe una reserva con la misma fecha
+        // Verificar si ya existe una reserva con la misma fecha y tipo "Ambos"
         $sql_verificar_reserva = "SELECT ID_Reservacion FROM reservacion WHERE Fecha_Reserva = '$fecha_reservacion'";
         $result_verificar = $conn->query($sql_verificar_reserva);
 
         if ($result_verificar->num_rows > 0 || $tipo_reserva === 'Ambos') {
-            // Si ya existe una reserva para la fecha seleccionada o si el tipo de reserva es "Ambos", mostrar una alerta
-            echo "<script>
-                    alert('No se puede realizar la reserva. La fecha o tipo de reserva ya está ocupada.');
-                    window.location.href='../html/employee_page.php';
-                  </script>";
-            exit();
+            if ($result_verificar->num_rows > 0 && $tipo_reserva !== 'Ambos') {
+                // Si ya existe una reserva para la fecha seleccionada y el tipo de reserva no es "Ambos", mostrar una alerta
+                echo "<script>
+                        alert('No se puede realizar la reserva. La fecha ya está ocupada.');
+                        window.location.href='../html/employee_page.php';
+                      </script>";
+                exit();
+            } elseif ($tipo_reserva === 'Ambos') {
+                // Si el tipo de reserva es "Ambos", verificar por fecha y hora
+                $sql_verificar_reserva = "SELECT ID_Reservacion FROM reservacion WHERE Fecha_Reserva = '$fecha_reservacion' AND (Hora_Inicio <= '$hora_final' AND Hora_Finalizado >= '$hora_inicio')";
+                $result_verificar = $conn->query($sql_verificar_reserva);
+
+                if ($result_verificar->num_rows > 0) {
+                    // Si existe una reserva para la fecha y hora seleccionadas, mostrar una alerta
+                    echo "<script>
+                            alert('No se puede realizar la reserva. La fecha o tipo de reserva ya está ocupada.');
+                            window.location.href='../html/employee_page.php';
+                          </script>";
+                    exit();
+                }
+            }
         }
 
         // Calcular la duración entre la hora de inicio y la hora final

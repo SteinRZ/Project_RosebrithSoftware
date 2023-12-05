@@ -177,7 +177,7 @@
                                     <option value="" disabled selected>Elige el área que administrara</option>
                                     <option value="Alberca">Alberca</option>
                                     <option value="Salón">Salón</option>
-                                    <option value="Salón">Ambos</option>
+                                    <option value="Ambos">Ambos</option>
                                 </select>
                                 <hr class="sidebar-divider d-none d-md-block">
 

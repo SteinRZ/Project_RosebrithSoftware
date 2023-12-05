@@ -157,6 +157,79 @@
                             include '../php/graficos.php';
                         ?>
                         </div>
+                        <div class="card-body">
+                        <!-- Gráfico de barras agrupadas para Usuarios, Empleados, Clientes y Reservaciones -->
+                            <canvas id="groupedChart" width="300" height="100"></canvas>
+
+                            <script>
+                                // Datos para los gráficos
+                                var usuariosData = <?php echo $result_usuario->num_rows; ?>;
+                                var empleadosData = <?php echo $result_empleado->num_rows; ?>;
+                                var clientesData = <?php echo $result_cliente->num_rows; ?>;
+                                var reservacionesData = <?php echo $result_reservacion->num_rows; ?>;
+
+                                // Función para crear gráfico de barras agrupadas
+                                function createGroupedChart() {
+                                    var ctx = document.getElementById('groupedChart').getContext('2d');
+                                    var groupedChart = new Chart(ctx, {
+                                        type: 'bar',
+                                        data: {
+                                            labels: ['Usuarios', 'Empleados', 'Clientes', 'Reservaciones'],
+                                            datasets: [
+                                                {
+                                                    label: 'Cantidad',
+                                                    data: [usuariosData, empleadosData, clientesData, reservacionesData],
+                                                    backgroundColor: [
+                                                        'rgba(255, 99, 132, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                        'rgba(255, 206, 86, 0.2)',
+                                                        'rgba(75, 192, 192, 0.2)'
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                        'rgba(75, 192, 192, 1)'
+                                                    ],
+                                                    borderWidth: 1
+                                                }
+                                            ]
+                                        },
+                                        options: {
+                                            scales: {
+                                                x: {
+                                                    beginAtZero: true
+                                                },
+                                                y: {
+                                                    beginAtZero: true
+                                                }
+                                            }
+                                        }
+                                    });
+                                }
+
+                                // Crear gráfico de barras agrupadas
+                                createGroupedChart();
+
+
+                                
+                                
+                                $(document).ready(function () {
+                                $('#tablaUsuarios, #tablaEmpleados, #tablaClientes, #tablaReservaciones').DataTable({
+                                    "search": {
+                                        "smart": false,
+                                        "caseInsensitive": true
+                                    },
+                                    "searching": true
+                                });
+                            });
+
+
+
+
+
+                            </script>
+                        </div>
                     </div>
 
                 </div>
