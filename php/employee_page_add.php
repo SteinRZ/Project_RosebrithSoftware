@@ -168,7 +168,7 @@
                             <input type="time" name="hora_final" required>
                             <hr class="sidebar-divider d-none d-md-block">
                             <h4>Anticipo:</h4>
-                            <input type="text" name="anticipo" required>
+                            <input type="text" name="anticipo" value="600" readonly>
                             <hr class="sidebar-divider d-none d-md-block">
                             <button class="btn btn-info" type="submit" name="agregar_cita">Agregar Cita</button>
                         </form>

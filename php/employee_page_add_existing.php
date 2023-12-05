@@ -141,7 +141,7 @@
                         <?php
                             include '../php/employee_consult.php';
                         ?>
-                        <h4>ID del Cliente:</h4>
+                        <h4>Nombre del Cliente:</h4>
                         <select id="id_cliente" name="id_cliente" required>
                             <option value="" selected disabled>Selecciona el nombre del cliente</option>
                             <?php 
@@ -179,7 +179,7 @@
                             <input type="time" name="hora_final" required>
                             <hr class="sidebar-divider d-none d-md-block">
                             <h4>Anticipo:</h4>
-                            <input type="text" name="anticipo" required>
+                            <input type="text" name="anticipo" value="600" readonly>
                             <hr class="sidebar-divider d-none d-md-block">
                             <button class="btn btn-info" type="submit" name="agregar_cita_existente">Agregar Cita</button>
                         </form>
