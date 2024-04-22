@@ -36,7 +36,7 @@
             <p>Disfruta de un dia especial junto con nosotros en nuestro grandioso salon o nuestra grandiosa alberca.</p>
         </div>
         <div class="contenido__texto--2">
-            <p>Ponte en contactos con nosotros y crea una reservacion ahora mismo con nosotros.</p>
+            <p>Contacta con nosotros y crea una reservacion ahora mismo con nosotros.</p>
         </div>
     </div>
     

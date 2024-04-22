@@ -146,7 +146,9 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Tabla de Usuarios</h1>
                     <p class="mb-4">Se mostraran todos los usuarios registrados y alamacenados en la base de datos.</p>
-
+                    <div style="text-align:center">
+                    <button style="">Generar Reporte</button>
+                    </div>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -157,9 +159,10 @@
                             <form action='../php/guardar_cambios_Usuario.php' method='post'>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
+                                        
                                         <tr>
+                                           <th>Correo</th>
                                             <th>Id del Usuario</th>
-                                            <th>Correo</th>
                                             <th>Contraseña</th>
                                             <th>Rol</th>
                                             <th>Fecha de Creación</th>
@@ -168,8 +171,8 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Id del Usuario</th>
                                             <th>Correo</th>
+                                            <th>Id del Usuario</th>
                                             <th>Contraseña</th>
                                             <th>Rol</th>
                                             <th>Fecha de Creación</th>
@@ -181,8 +184,9 @@
                                         while ($row = $result_usuario->fetch_assoc()) {
                                     ?>
                                             <tr>
-                                                <td><?php echo "<input type='hidden' name='ID_Usuario[]' value='" . $row['ID_Usuario'] . "'>" . $row['ID_Usuario']; ?></td>
-                                                <td><input type='text' name='Correo[]' value='<?php echo htmlspecialchars($row['Correo'] ?? ''); ?>'></td>
+                                                <td><?php echo "<input type='hidden' name='Correo[]' value='" . $row['Correo'] . "'>" . $row['Correo']; ?></td>
+                                                <td><?php echo htmlspecialchars($row['ID_Usuario'] ?? ''); ?></td>
+                                               
                                                 <td><input type='text' name='Contraseña[]' value='<?php echo htmlspecialchars($row['Contraseña'] ?? ''); ?>'></td>
                                                 <td><input type='text' name='Rol[]' value='<?php echo htmlspecialchars($row['Rol'] ?? ''); ?>'></td>
                                                 <td><input type='text' name='Fecha_Creacion[]' value='<?php echo $row['Fecha_Creacion']; ?>' readonly></td>

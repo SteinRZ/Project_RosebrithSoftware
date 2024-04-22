@@ -27,7 +27,7 @@
             <!----------------INICIARSESION----------------->
                 <div class="login">
                     <form name="sesion" method = "POST" action="../php/iniciar_sesion.php">
-                        <label for="chk" aria-hidden="true">Iniciar Sesíon</label>
+                        <label for="chk" aria-hidden="true">Iniciar Sesión</label>
                         <input type="email" name="email2" placeholder="Correo" required="">
                         <input type="password" name="pswd2" placeholder="Contraseña" required="">           
                         <button type="submit" name="iniciar_sesion">Entrar</button>
