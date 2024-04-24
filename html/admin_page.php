@@ -146,9 +146,6 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Tabla de Usuarios</h1>
                     <p class="mb-4">Se mostraran todos los usuarios registrados y alamacenados en la base de datos.</p>
-                    <div style="text-align:center">
-                    <button style="">Generar Reporte</button>
-                    </div>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">

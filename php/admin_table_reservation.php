@@ -142,10 +142,24 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Tabla de Reservaciones</h1>
                     <p class="mb-4">Se mostraran todas las reservaciones registrados y alamacenados en la base de datos.</p>
+                    
+                    <!--Boton para generar reportes-->
+                    <div style="text-align:center; padding-bottom: 20px">
+                        <p class="mb-4">Selecciona una opcion para generar un reporte.</p>
+                        <div style="display: flex; justify-content: center; gap: 10px;">
+                            <form method="post" action="generar_reporte.php">
+                                <select name="opciones">
+                                    <option value="alberca">Alberca</option>
+                                    <option value="salon">Salón</option>
+                                    <option value="alberca_salon">Ambos</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary" name="reporte">Generar reporte</button>
+                            </form>
+                        </div>
+                    </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
