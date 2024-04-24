@@ -1,9 +1,5 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
-
-// CONFIGURACION DE LA BASE DE DATOS
+session_start();
 include 'db_config.php';
 
 // OBTENCION DE ELEMENTO DE COMBOBOX
@@ -13,11 +9,13 @@ if (isset($_POST['reporte'])) {
 }
 
 function obtenerReservaciones($tipoReserva) {
+    global $conn;
+
     // Obtener la fecha actual
     $fechaActual = date('Y-m-d');
 
     // Preparar la consulta SQL
-    $stmt = $mysqli->prepare("SELECT Fecha_Reserva, Tipo_Reserva, Anticipo, Duracion, Total FROM Reservacion WHERE Fecha_Reserva > ? AND Tipo_Reserva = ?");
+    $stmt = $conn->prepare("SELECT ID_Cliente, Fecha_Reserva, Tipo_Reserva, Anticipo, Duracion, Total FROM Reservacion WHERE Fecha_Reserva > ? AND Tipo_Reserva = ?");
     $stmt->bind_param('ss', $fechaActual, $tipoReserva);
 
     // Ejecutar la consulta
@@ -28,6 +26,6 @@ function obtenerReservaciones($tipoReserva) {
 
     // Mostrar los resultados
     while ($row = $result->fetch_assoc()) {
-        echo 'Fecha de Reserva: ' . $row['Fecha_Reserva'] . ', Tipo de Reserva: ' . $row['Tipo_Reserva'] . ', Anticipo: ' . $row['Anticipo'] . ', Duración: ' . $row['Duracion'] . ', Total: ' . $row['Total'] . '<br>';
+        echo 'ID Cliente: ' . $row['ID_Cliente'] . 'Fecha de Reserva: ' . $row['Fecha_Reserva'] . ', Tipo de Reserva: ' . $row['Tipo_Reserva'] . ', Anticipo: ' . $row['Anticipo'] . ', Duración: ' . $row['Duracion'] . ', Total: ' . $row['Total'] . '<br>';
     }
 }
