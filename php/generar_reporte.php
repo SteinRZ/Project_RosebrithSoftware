@@ -1,44 +1,72 @@
 <?php
-// Iniciar sesión si no está activa
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
+session_start();
+include 'db_config.php';
+require ('../fpdf186/fpdf.php');
+
+// OBTENCION DE ELEMENTO DE COMBOBOX
+if (isset($_POST['reporte'])) {
+    $tipoReserva = $_POST['opciones'];
+    obtenerReservaciones($tipoReserva);
 }
 
-include 'db_config.php'; // Archivo de configuración de la base de datos
+function obtenerReservaciones($tipoReserva) {
+    global $conn;
 
-// Realizar la conexión a la base de datos
-$conn = new mysqli($servername, $username, $password, $dbname);
+    // Crear una instancia de la clase FPDF
+    $pdf = new FPDF('P','mm','A4');
+    $pdf->AddPage();
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+    // Configurar la fuente
+    $pdf->SetFont('Arial', 'B', 16);
 
-$query_clientes = "SELECT ID_Cliente, Nombre FROM cliente";
-$result_clientes = $conn->query($query_clientes);
+    // Agregar el encabezado
+    $pdf->Cell(0, 10, 'Rosebrith', 0, 0, 'L');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtener el ID de la reservación en este caso como no tenia un formulario lo puse manualmente
-    $id_reservacion = 7;
+    // Agregar el logo
+    $pdf->Image('../image/main_icon.png',160,10,25);
+    $pdf->Ln(20);
 
-    $query_reservacion = "SELECT c.ID_Cliente, c.Nombre AS nombre_cliente, c.Apellido_Paterno, c.Apellido_Materno, c.Telefono, r.Fecha_Reserva, r.Tipo_Reserva, r.Anticipo, r.Hora_Inicio, r.Hora_Finalizado, r.Duracion
-    FROM reservacion r
-    INNER JOIN cliente c ON r.ID_Cliente = c.ID_Cliente
-    INNER JOIN usuario u ON c.ID_Usuario = u.ID_Usuario
-    WHERE r.ID_Reservacion = $id_reservacion";
+    // Agregar el subtítulo
+    $pdf->SetFont('Arial', '', 12);
+    $pdf->Cell(0, 10, 'Reporte del sistema de renta de alberca y salon', 0, 0, 'L');
+    $pdf->Ln(20);
 
-    $result_reservacion = $conn->query($query_reservacion);
+    // Encabezado de la tabla
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->Cell(30, 10, '# de cliente', 1, 0, 'C');
+    $pdf->Cell(40, 10, 'Fecha de reserva', 1, 0, 'C');
+    $pdf->Cell(30, 10, 'Tipo de reserva', 1, 0, 'C');
+    $pdf->Cell(30, 10, 'Anticipo', 1, 0, 'C');
+    $pdf->Cell(30, 10, 'Duracion', 1, 0, 'C');
+    $pdf->Cell(30, 10, 'Total', 1, 0, 'C');
+    $pdf->Ln();
 
-    if ($result_reservacion && $result_reservacion->num_rows > 0) {
-        // Mostrar los resultados en texto
-        while ($row = $result_reservacion->fetch_assoc()) {
-            echo "ID Cliente: " . $row['ID_Cliente'] . ", Nombre Cliente: " . $row['nombre_cliente'] . ", Apellido Paterno: " . $row['Apellido_Paterno'] . ", Apellido Materno: " . $row['Apellido_Materno'] . ", Teléfono: " . $row['Telefono'] . ", Fecha de Reserva: " . $row['Fecha_Reserva'] . ", Tipo de Reserva: " . $row['Tipo_Reserva'] . ", Anticipo: " . $row['Anticipo'] . ", Hora de Inicio: " . $row['Hora_Inicio'] . ", Hora de Finalizado: " . $row['Hora_Finalizado'] . ", Duración: " . $row['Duracion'] . "<br>";
-        }
-    } else {
-        echo "No se encontraron resultados para la reservación con ID: $id_reservacion";
+    // Obtener la fecha actual
+    $fechaActual = date('Y-m-d');
+
+    // Preparar la consulta SQL
+    $stmt = $conn->prepare("SELECT ID_Cliente, Fecha_Reserva, Tipo_Reserva, Anticipo, Duracion, Total FROM Reservacion WHERE Fecha_Reserva > ? AND Tipo_Reserva = ?");
+    $stmt->bind_param('ss', $fechaActual, $tipoReserva);
+
+    // Ejecutar la consulta
+    $stmt->execute();
+
+    // Obtener los resultados
+    $result = $stmt->get_result();
+
+    // Mostrar los resultados
+    $pdf->SetFont('Arial', 'B', 10);
+    while ($row = $result->fetch_assoc()) {
+        $pdf->Cell(30, 10, $row['ID_Cliente'], 1, 0, 'C');
+        $pdf->Cell(40, 10, $row['Fecha_Reserva'], 1, 0, 'C');
+        $pdf->Cell(30, 10, $row['Tipo_Reserva'], 1, 0, 'C');
+        $pdf->Cell(30, 10, $row['Anticipo'], 1, 0, 'C');
+        $pdf->Cell(30, 10, $row['Duracion'], 1, 0, 'C');
+        $pdf->Cell(30, 10, $row['Total'], 1, 0, 'C');
+        $pdf->Ln();
     }
-}
 
-// Cerrar la conexión a la base de datos
-$conn->close();
+    // Guardar el PDF
+    $pdf->Output();
+}
 ?>
