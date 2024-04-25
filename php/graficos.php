@@ -154,7 +154,7 @@ switch ($filterType) {
         <option value="month" <?php echo ($filterType == 'month') ? 'selected' : ''; ?>>Mes</option>
         <option value="custom" <?php echo ($filterType == 'custom') ? 'selected' : ''; ?>>Personalizado</option>
     </select>
-
+   <!--  apartado para seleccionar fecha -->
     <div id="dateControls" <?php echo ($filterType == 'custom') ? '' : 'style="display: none;"'; ?>>
         <label for="selectedDate">Fecha:</label>
         <input type="date" id="selectedDate" name="selectedDate" value="<?php echo $selectedDate; ?>">
