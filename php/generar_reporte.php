@@ -55,7 +55,7 @@ function obtenerReservaciones($tipoReserva) {
     $result = $stmt->get_result();
 
     // Mostrar los resultados
-    $pdf->SetFont('Arial', '', 10);
+    $pdf->SetFont('Arial', 'B', 10);
     while ($row = $result->fetch_assoc()) {
         $pdf->Cell(30, 10, $row['ID_Cliente'], 1, 0, 'C');
         $pdf->Cell(40, 10, $row['Fecha_Reserva'], 1, 0, 'C');
