@@ -152,9 +152,9 @@
                         <div style="display: flex; justify-content: center; gap: 10px;">
                             <form method="post" action="generar_reporte.php">
                                 <select name="opciones">
-                                    <option value="alberca">Alberca</option>
-                                    <option value="salon">Salón</option>
-                                    <option value="alberca_salon">Ambos</option>
+                                    <option value="Alberca">Alberca</option>
+                                    <option value="Salon">Salon</option>
+                                    <option value="Ambos">Ambos</option>
                                 </select>
                                 <button type="submit" class="btn btn-primary" name="reporte">Generar reporte</button>
                             </form>
