@@ -47,7 +47,7 @@ Fase 2: Diseño de base de datos e implementacion a software.
 | funcionabilidad de login | COMPLETADO | Daniel Segovia | COMPLETADO. |
 | client_page | COMPLETADO | Esdras Amaya | COMPLETADO. |
 | admin_page | PENDIENTE | Alan Arratia | COMPLETADO. |
-| employee_page | PENDIENTE | Osvaldo Olivares | Pagina que reedirige al administrador al loguearse. En esta pagina el empleado podra ver las reservaciones/eventos y hacer modificaciones en ella. |
+| employee_page | PENDIENTE | Osvaldo Olivares | COMPLETADO. |
 | funcionabilidad de client_page | COMPLETADO | Esdras Amaya, Daniel Segovia | COMPLETADO. |
 | funcionabilidad de admin_page | PENDIENTE | Alan Arratia, Daniel Segovia | COMPLETADO. |
 | funcionabilidad de employee_page | PENDIENTE | Osvaldo Olivares, Daniel Segovia | COMPLETADO. |
