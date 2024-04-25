@@ -34,7 +34,7 @@ Fase 1: Diseño de interfaz.
 |------------|---------|----------------------|-------------|
 | header | COMPLETADO | Esdras Amaya | COMPLETADO. |
 | main | COMPLETADO | Esdras Amaya, Osvaldo Olivares | COMPLETADO. |
-| services | PENDIENTE | Daniel Segovia | COMPLETADO. |
+| services | PENDIENTE | Daniel Segovia | Faltan detalles |
 | contact_us | COMPLETADO | Esdras Amaya | COMPLETADO. |
 | login | COMPLETADO | Osvaldo Olivares | COMPLETADO. |
 | reserve | COMPLETADO | Alan Yahir | COMPLETADO. |
@@ -46,19 +46,23 @@ Fase 2: Diseño de base de datos e implementacion a software.
 | conexion base de datos a sistema | COMPLETADO | Daniel Segovia | COMPLETADO. |
 | funcionabilidad de login | COMPLETADO | Daniel Segovia | COMPLETADO. |
 | client_page | COMPLETADO | Esdras Amaya | COMPLETADO. |
-| admin_page | PENDIENTE | Alan Arratia | COMPLETADO. |
-| employee_page | PENDIENTE | Osvaldo Olivares | COMPLETADO. |
+| admin_page | PENDIENTE | Alan Arratia | Pagina que reedirige al empleado al loguearse. En esta pagina el administrador podra ver empleados, reservaciones/eventos, clientes y hacer modificaciones en ella. |
+| employee_page | PENDIENTE | Osvaldo Olivares | Pagina que reedirige al administrador al loguearse. En esta pagina el empleado podra ver las reservaciones/eventos y hacer modificaciones en ella. |
 | funcionabilidad de client_page | COMPLETADO | Esdras Amaya, Daniel Segovia | COMPLETADO. |
-| funcionabilidad de admin_page | PENDIENTE | Alan Arratia, Daniel Segovia | COMPLETADO. |
-| funcionabilidad de employee_page | PENDIENTE | Osvaldo Olivares, Daniel Segovia | COMPLETADO. |
-| funcionabilidad de contact_us | PENDIENTE | Daniel Segovia | COMPLETADO. |
+| funcionabilidad de admin_page | PENDIENTE | Alan Arratia, Daniel Segovia | Debe mostrar la lista de empleados y poder gestionar con ella, la lista de reservaciones/eventos y poder gestionar con ella y la lista de clientes y poder gestionar sobre ella. |
+| funcionabilidad de employee_page | PENDIENTE | Osvaldo Olivares, Daniel Segovia | Debe mostrar la lista de reservaciones/eventos y poder gestionar sobre ella. |
+| funcionabilidad de contact_us | PENDIENTE | Daniel Segovia | Al contestar el formulario de contactanos, debe enviar un correo al administrador y un mensaje de confirmacion al cliente. |
 
 
 Fase 3: Funcionabilidad de reservas e inicio de sesion.
 | ASIGNACION | ESTATUS | INTEGRANTE ASIGNADO | COMENTARIOS |
 |------------|---------|---------------------|-------------|
-| funcionabilidad de reserve | PENDIENTE | PENDIENTE | COMPLETADO. |
-| demostrar inicio de sesion | PENDIENTE | PENDIENTE | COMPLETADO. |
-| mantener sesion iniciada | PENDIENTE | PENDIENTE | COMPLETADO. |
-| cerrar sesion | PENDIENTE | PENDIENTE | COMPLETADO. |
-| depurar diseños | PENDIENTE | PENDIENTE | COMPLETADO. |
+| funcionabilidad de reserve | PENDIENTE | PENDIENTE | PENDIENTE |
+| demostrar inicio de sesion | PENDIENTE | PENDIENTE | PENDIENTE |
+| mantener sesion iniciada | PENDIENTE | PENDIENTE | PENDIENTE |
+| cerrar sesion | PENDIENTE | PENDIENTE | PENDIENTE |
+| depurar diseños | PENDIENTE | PENDIENTE | PENDIENTE |
+
+Fase 4: Implementacion del sistema.
+| ASIGNACION | ESTATUS | INTEGRANTE ASIGNADO | COMENTARIOS |
+|------------|---------|---------------------|-------------|

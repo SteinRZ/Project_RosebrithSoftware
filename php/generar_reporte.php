@@ -32,7 +32,7 @@ function obtenerReservaciones($tipoReserva) {
     $pdf->Ln(20);
 
     // Encabezado de la tabla
-    $pdf->SetFont('Arial', 'B', 10);
+    $pdf->SetFont('Arial', '', 10);
     $pdf->Cell(30, 10, '# de cliente', 1, 0, 'C');
     $pdf->Cell(40, 10, 'Fecha de reserva', 1, 0, 'C');
     $pdf->Cell(30, 10, 'Tipo de reserva', 1, 0, 'C');
