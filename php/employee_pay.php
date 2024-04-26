@@ -33,8 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['pagar_cita'])) {
         // Restar el monto pagado a TotalCambiado
         $total_cambiado -= $pagar;
 
-        // Si el monto pagado es mayor o igual al TotalCambiado, establecer TotalCambiado a 0
+    /*     // Si el monto pagado es mayor o igual al TotalCambiado, establecer TotalCambiado a 0
         if ($pagar >= $total_cambiado) {
+            $total_cambiado = 0;
+        } */
+
+        if ($total_cambiado <= 0) {
             $total_cambiado = 0;
         }
 

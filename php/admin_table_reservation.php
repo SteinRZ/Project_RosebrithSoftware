@@ -181,6 +181,7 @@
                                         <th>Hora de Finalizado</th>
                                         <th>Duración</th>
                                         <th>Total</th>
+                                        <th>Pendiente a pagar</th>
                                         <th>Comentario</th>
                                         <th>Fecha de Creación</th>
                                         <th>Acciones</th>
@@ -217,6 +218,7 @@
                                                     <td><input type='text' name='Hora_Finalizado[]' value='<?php echo $row['Hora_Finalizado']; ?>'></td>
                                                     <td><input type='text' name='Duracion[]' value='<?php echo $row['Duracion']; ?>'></td>
                                                     <td><input type='text' name='Total[]' value='<?php echo $row['Total']; ?>'></td>
+                                                    <td><input type='text' name='TotalCambiado[]' value='<?php echo $row['TotalCambiado']; ?>'></td>
                                                     <td><input type='text' name='Comentario[]' value='<?php echo $row['Comentario']; ?>'></td>
                                                     <td><span><?php echo $row['Fecha_Creacion']; ?></span></td>
                                                     <td>

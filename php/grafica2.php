@@ -89,6 +89,41 @@ if ($resultReservaciones2) {
     echo "Error al ejecutar la consulta.";
 }
 
+//CONSULTA PARA GANANCIAS
+$sqlReservaciones3 = "SELECT 
+    MONTH(Fecha_Creacion) AS Mes,
+    YEAR(Fecha_Creacion) AS Año,
+    SUM(Total - ABS(TotalCambiado)) AS Ganancia
+FROM Reservacion
+WHERE YEAR(Fecha_Creacion) = YEAR(CURRENT_DATE())
+GROUP BY MONTH(Fecha_Creacion), YEAR(Fecha_Creacion)
+ORDER BY MONTH(Fecha_Creacion)";
+
+$resultReservaciones3 = $conn->query($sqlReservaciones3);
+
+// Verificar si la consulta se ejecutó correctamente
+if ($resultReservaciones3) {
+    // Inicializar el array para almacenar los datos
+    $originalReservacionesData3 = [];
+
+    // Obtener los resultados de la consulta
+    while ($row3 = $resultReservaciones3->fetch_assoc()) {
+        // Almacenar los datos en el array
+        $Mes = $row3['Mes'];
+        $Año = $row3['Año'];
+        $Ganancia = $row3['Ganancia'];
+
+        // Agregar los datos al array
+        $originalReservacionesData3[] = [
+            'Mes' => $Mes,
+            'Año' => $Año,
+            'Ganancia' => $Ganancia
+        ];
+    }
+} else {
+    // Manejar el caso en que la consulta no se ejecute correctamente
+    echo "Error al ejecutar la consulta.";
+}
 
 
 
@@ -176,7 +211,39 @@ $datasetsCombined = [
 // Asigna el nuevo conjunto de datos combinado
 $datasets2 = $datasetsCombined;
 
+//GANANCIAS
+$mesData = array_column($originalReservacionesData3, 'Mes');
+$añoData = array_column($originalReservacionesData3, 'Año');
+$gananciaData = array_column($originalReservacionesData3, 'Ganancia');
 
+// Etiquetas para la leyenda
+$labels2 = [];
+foreach ($mesData as $index => $mes) {
+    $labels2[] = "$mes/$añoData[$index]"; // Formato: mes/año
+}
+
+// Crea un solo conjunto de datos combinado
+$datasetsCombined2 = [
+    [
+    
+        'label' => 'Ganancia', // Etiquetas para la leyenda
+        'data' => $gananciaData,
+        'backgroundColor' => [
+            'rgba(0, 128, 0, 0.2)', // Color de fondo para los datos de "Ganancia" (verde fuerte)
+        ],
+        'borderColor' => [
+            'rgba(75, 192, 192, 1)', // Color de borde para los datos de "Ganancia"
+        ],
+        'borderWidth' => 1
+    ]
+];
+
+// Asigna el nuevo conjunto de datos combinado
+$datasets3 = $datasetsCombined2;
+$chartData = [
+    'labels' => $labels2, // Etiquetas para el eje x
+    'datasets' => $datasetsCombined2 // Conjuntos de datos para las barras
+];
 // Funciones para obtener colores según el tipo de reservación
 function getBackgroundColor($tipo) {
     switch ($tipo) {
@@ -250,8 +317,6 @@ $conn->close();
     <h3>Pagos liquidados y pendientes</h3>
 </div>
 
-
-
 <canvas id="reservacionesChart2" width="1000" height="400"></canvas>
 <div id="legendContainer" style="display: flex; justify-content: center;">
     <div style="display: flex; align-items: center; margin-right: 20px;">
@@ -263,6 +328,14 @@ $conn->close();
         <span>No pagado</span>
     </div>
 </div>
+
+<br>
+<br>
+<div id="legendTitle" style="text-align: center; margin-bottom: 10px;">
+    <h3>Ganancias</h3>
+</div>
+
+<canvas id="reservacionesChart3" width="1000" height="400"></canvas>
 
 
 <!-- Scrit para grafica fecha reserva -->
@@ -276,6 +349,11 @@ $conn->close();
     var reservacionesData2 = {
         
         datasets: <?php echo json_encode($datasets2); ?>
+    };
+
+    var reservacionesData3 = {
+        
+        datasets: <?php echo json_encode($datasets3); ?>
     };
     
 
@@ -334,9 +412,38 @@ $conn->close();
     }
 
 
+    function createChart3(canvasId, chartData) {
+    var ctx = document.getElementById(canvasId).getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels:  <?php echo json_encode($labels2); ?>,
+            datasets: chartData.datasets
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            scales: {
+                y: {
+                    display: true,
+                    beginAtZero: true
+                },
+                x: {
+                    display: true
+                }
+            }
+        }
+    });
+}
+
+
+
+
     // Crear gráfico
     createChart('reservacionesChart', reservacionesData);
     createChart2('reservacionesChart2', reservacionesData2 );
+    createChart3('reservacionesChart3', reservacionesData3);
 
     // Lógica para mostrar/ocultar controles de fecha
     $(document).ready(function () {
