@@ -1,3 +1,5 @@
+employee pay
+
 <?php
 // Iniciar sesión si no está activa
 if (session_status() !== PHP_SESSION_ACTIVE) {
