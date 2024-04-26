@@ -6,6 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 // CONFIGURACION DE LA BASE DE DATOS
 include ("..\php\db_config.php");
 
+
 // Función para obtener datos filtrados por fecha
 function filterDataByDate($dataArray, $date) {
     $filteredData = [];
@@ -54,6 +55,42 @@ function filterDataCustom($originalData, $customDate) {
 // Consultas SQL para obtener datos
 $sqlReservaciones = "SELECT Fecha_Creacion, Tipo_Reserva, COUNT(*) as total FROM Reservacion GROUP BY Fecha_Creacion, Tipo_Reserva";
 $resultReservaciones = $conn->query($sqlReservaciones);
+
+
+//Consulta SQL para saber si estan pagados
+$sqlReservaciones2 = "SELECT 
+SUM(CASE WHEN TotalCambiado = 0 THEN 1 ELSE 0 END) AS pagados,
+SUM(CASE WHEN TotalCambiado != 0 THEN 1 ELSE 0 END) AS noPagados
+FROM Reservacion";
+
+$resultReservaciones2 = $conn->query($sqlReservaciones2);
+
+
+// Verificar si la consulta se ejecutó correctamente
+if ($resultReservaciones2) {
+    // Inicializar el array para almacenar los datos
+    $originalReservacionesData2 = [];
+
+    // Obtener los resultados de la consulta
+    while ($row2 = $resultReservaciones2->fetch_assoc()) {
+        // Almacenar los datos en el array
+       
+        $noPagados = $row2['noPagados'];
+        $pagados = $row2['pagados'];
+
+        // Agregar los datos al array
+        $originalReservacionesData2[] = [
+            'No_Pagados' => $noPagados,
+            'Pagados' => $pagados
+        ];
+    }
+} else {
+    // Manejar el caso en que la consulta no se ejecute correctamente
+    echo "Error al ejecutar la consulta.";
+}
+
+
+
 
 // Obtener datos para los gráficos
 $originalReservacionesData = [];
@@ -113,6 +150,32 @@ foreach ($tiposReservacion as $tipo) {
         'borderWidth' => 1
     ];
 }
+//PRUEBA
+// Obtener etiquetas y conjuntos de datos ordenados cronológicamente
+$pagadosData = array_column($originalReservacionesData2, 'Pagados');
+$noPagadosData = array_column($originalReservacionesData2, 'No_Pagados');
+
+// Crea un solo conjunto de datos combinado
+$datasetsCombined = [
+    [
+        
+        'data' => [$pagadosData, $noPagadosData], // Combina los totales de pagados y no pagados en un solo conjunto de datos
+        'labels' => ['Pagados',"N"], // Etiquetas separadas para la leyenda
+        'backgroundColor' => [
+            'rgba(0, 128, 0, 0.2)', // Color de fondo para los datos de "Pagados" (verde fuerte)
+            'rgba(255, 0, 0, 0.2)' // Color de fondo para los datos de "No Pagados" (rojo fuerte)
+        ],
+        'borderColor' => [
+            'rgba(75, 192, 192, 1)', // Color de borde para los datos de "Pagados"
+            'rgba(255, 99, 132, 1)' // Color de borde para los datos de "No Pagados"
+        ],
+        'borderWidth' => 1
+    ]
+];
+
+// Asigna el nuevo conjunto de datos combinado
+$datasets2 = $datasetsCombined;
+
 
 // Funciones para obtener colores según el tipo de reservación
 function getBackgroundColor($tipo) {
@@ -182,6 +245,25 @@ $conn->close();
 
 <!-- Gráfico de barras para reservaciones por tipo y fecha de reserva -->
 <canvas id="reservacionesChart" width="300" height="100"></canvas>
+<!-- Grafica de pagados y pendientes -->
+<div id="legendTitle" style="text-align: center; margin-bottom: 10px;">
+    <h3>Pagos liquidados y pendientes</h3>
+</div>
+
+
+
+<canvas id="reservacionesChart2" width="1000" height="400"></canvas>
+<div id="legendContainer" style="display: flex; justify-content: center;">
+    <div style="display: flex; align-items: center; margin-right: 20px;">
+        <div style="width: 10px; height: 10px; background-color: rgba(0, 128, 0, 0.2);borderColor:rgba(255, 99, 132, 1); margin-right: 5px;"></div>
+        <span>Pagado</span>
+    </div>
+    <div style="display: flex; align-items: center;">
+        <div style="width: 10px; height: 10px; background-color: rgba(255, 0, 0, 0.2);borderColor:rgba(75, 192, 192, 1); margin-right: 5px;"></div>
+        <span>No pagado</span>
+    </div>
+</div>
+
 
 <!-- Scrit para grafica fecha reserva -->
 <script>
@@ -190,6 +272,12 @@ $conn->close();
         labels: <?php echo json_encode($sortedLabels); ?>,
         datasets: <?php echo json_encode($datasets); ?>
     };
+
+    var reservacionesData2 = {
+        
+        datasets: <?php echo json_encode($datasets2); ?>
+    };
+    
 
     // Función para crear el gráfico de barras
     function createChart(canvasId, chartData) {
@@ -215,8 +303,40 @@ $conn->close();
         });
     }
 
+      // Función para crear el gráfico de pastel
+      function createChart2(canvasId, chartData) {
+        var ctx = document.getElementById(canvasId).getContext('2d');
+
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: chartData.labels,
+                datasets: chartData.datasets
+            },
+            options: {
+            aspectRatio: 1.5, // Relación de aspecto ajustada
+            responsive: false,
+            maintainAspectRatio: true,
+              
+                scales: {
+                    y: {
+                        display: false,
+                        beginAtZero: true,
+                        stacked: true
+                    },
+                    x: {
+                        display: false,
+                        stacked: true
+                    }
+                }
+            }
+        });
+    }
+
+
     // Crear gráfico
     createChart('reservacionesChart', reservacionesData);
+    createChart2('reservacionesChart2', reservacionesData2 );
 
     // Lógica para mostrar/ocultar controles de fecha
     $(document).ready(function () {
