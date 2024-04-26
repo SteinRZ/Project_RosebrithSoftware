@@ -148,9 +148,15 @@
                     
                     <!--Boton para generar reportes-->
                     <div style="text-align:center; padding-bottom: 20px">
-                        <p class="mb-4">Selecciona una opcion para generar un reporte.</p>
-                        <div style="display: flex; justify-content: center; gap: 10px;">
+                        <p class="mb-4">Selecciona una opción para generar un reporte.</p>
+                        <div style="display: flex; justify-content: center; flex-direction: column; align-items: center; gap: 10px;">
                             <form method="post" action="generar_reporte.php">
+                                <input type="checkbox" id="reservaciones_pendientes" name="reservaciones_pendientes" onchange="toggleCheck(this)" checked>
+                                <label for="reservaciones_pendientes">Reservaciones pendientes</label>
+                                <br>
+                                <input type="checkbox" id="reservaciones_anteriores" name="reservaciones_anteriores" onchange="toggleCheck(this)">
+                                <label for="reservaciones_anteriores">Reservaciones anteriores</label>
+                                <br>
                                 <select name="opciones">
                                     <option value="Alberca">Alberca</option>
                                     <option value="Salon">Salon</option>
@@ -160,6 +166,17 @@
                             </form>
                         </div>
                     </div>
+
+                <script>
+                    function toggleCheck(checkbox) {
+                        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                        checkboxes.forEach(function (item) {
+                            if (item !== checkbox) {
+                                item.checked = false;
+                            }
+                        });
+                    }
+                </script>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
