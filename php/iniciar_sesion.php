@@ -2,7 +2,6 @@
 session_start();
 include 'db_config.php';
 
-
 $usuario_encontrado = false; // Variable para controlar si se encontró al usuario
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["iniciar_sesion"])) {
@@ -15,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["iniciar_sesion"])) {
     if ($result && $result->num_rows > 0) {
         $usuario = $result->fetch_assoc();
         $_SESSION['id_usuario'] = $usuario['ID_Usuario'];
-        $_SESSION['correo_usuario'] = $usuario['Correo']; // Cambiado de 'correo' a 'correo_usuario'
+        $_SESSION['correo'] = $usuario['Correo'];
         $_SESSION['rol'] = $usuario['Rol'];
 
         $rol = $usuario['Rol'];
