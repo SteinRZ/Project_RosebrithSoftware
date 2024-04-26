@@ -16,7 +16,7 @@ if (isset($_POST['reporte'])) {
 // Función para generar el encabezado del PDF
 function generarEncabezado($pdf) {
     $pdf->SetFont('Arial', 'B', 16);
-    $pdf->Cell(190, 0, 'REPORTE DE RESERVACIONES', 0, 1, 'C');
+    $pdf->Cell(190, 0, 'REPORTE RESERVACIONES', 0, 1, 'C');
     $pdf->Rect(10, 20, 190, 30, 'D');
     $pdf->SetTextColor(0);
     $pdf->SetFont('Arial', 'B', 12);

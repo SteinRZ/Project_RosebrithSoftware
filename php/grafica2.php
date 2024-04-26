@@ -308,6 +308,9 @@ $conn->close();
     </div>
 
     <input type="submit" value="Filtrar">
+    <!-- <button type="button" class="btn btn-primary" onclick="generarReporteGraficas()">Generar Reporte</button> -->
+    <button type="button" class="btn btn-primary" onclick="window.print()">Imprimir</button>
+
 </form>
 
 <!-- Gráfico de barras para reservaciones por tipo y fecha de reserva -->
@@ -464,3 +467,9 @@ $conn->close();
 
 </body>
 </html>
+<script>
+function generarReporteGraficas() {
+    // Redireccionar a la página PHP que generará el reporte de las gráficas
+    window.location.href = 'generar_reporte_graficas.php';
+}
+</script>
