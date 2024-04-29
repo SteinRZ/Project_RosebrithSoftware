@@ -6,7 +6,6 @@ if (session_status() == PHP_SESSION_NONE) {
 // CONFIGURACION DE LA BASE DE DATOS
 include ("..\php\db_config.php");
 
-
 // Función para obtener datos filtrados por fecha
 function filterDataByDate($dataArray, $date) {
     $filteredData = [];
@@ -57,14 +56,16 @@ $sqlReservaciones = "SELECT Fecha_Creacion, Tipo_Reserva, COUNT(*) as total FROM
 $resultReservaciones = $conn->query($sqlReservaciones);
 
 
-//Consulta SQL para saber si estan pagados
+$selected_year = isset($_POST['selected_year']) ? $_POST['selected_year'] : date("Y");
+
+// Consulta SQL para saber si están pagados filtrando por mes y año
 $sqlReservaciones2 = "SELECT 
-SUM(CASE WHEN TotalCambiado = 0 THEN 1 ELSE 0 END) AS pagados,
-SUM(CASE WHEN TotalCambiado != 0 THEN 1 ELSE 0 END) AS noPagados
-FROM Reservacion";
+    SUM(CASE WHEN TotalCambiado = 0 THEN 1 ELSE 0 END) AS pagados,
+    SUM(CASE WHEN TotalCambiado != 0 THEN 1 ELSE 0 END) AS noPagados
+FROM Reservacion
+WHERE YEAR(Fecha_Reserva) = '$selected_year'";
 
 $resultReservaciones2 = $conn->query($sqlReservaciones2);
-
 
 // Verificar si la consulta se ejecutó correctamente
 if ($resultReservaciones2) {
@@ -88,16 +89,16 @@ if ($resultReservaciones2) {
     // Manejar el caso en que la consulta no se ejecute correctamente
     echo "Error al ejecutar la consulta.";
 }
-
+$selected_year2 = isset($_POST['selected_year']) ? $_POST['selected_year'] : date("Y");
 //CONSULTA PARA GANANCIAS
 $sqlReservaciones3 = "SELECT 
-    MONTH(Fecha_Creacion) AS Mes,
-    YEAR(Fecha_Creacion) AS Año,
-    SUM(Total - ABS(TotalCambiado)) AS Ganancia
+MONTH(Fecha_Reserva) AS Mes,
+YEAR(Fecha_Reserva) AS Año,
+SUM(Total - TotalCambiado) AS Ganancia
 FROM Reservacion
-WHERE YEAR(Fecha_Creacion) = YEAR(CURRENT_DATE())
-GROUP BY MONTH(Fecha_Creacion), YEAR(Fecha_Creacion)
-ORDER BY MONTH(Fecha_Creacion)";
+WHERE YEAR(Fecha_Reserva) = '$selected_year2'
+GROUP BY MONTH(Fecha_Reserva), YEAR(Fecha_Reserva)
+ORDER BY MONTH(Fecha_Reserva)";
 
 $resultReservaciones3 = $conn->query($sqlReservaciones3);
 
@@ -124,7 +125,6 @@ if ($resultReservaciones3) {
     // Manejar el caso en que la consulta no se ejecute correctamente
     echo "Error al ejecutar la consulta.";
 }
-
 
 
 // Obtener datos para los gráficos
@@ -291,55 +291,53 @@ $conn->close();
     </style>
 </head>
 <body>
-
+<button onclick = "window.print()">imprimir</button>
 <!-- Controles de filtrado -->
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <label for="filterType">Seleccionar:</label>
-    <select id="filterType" name="filterType">
-        <option value="day">Día</option>
-        <option value="week">Semana</option>
-        <option value="month">Mes</option>
-        <option value="custom">Personalizado</option>
-    </select>
-    
-    <div id="dateControls" style="display: none;">
-        <label for="selectedDate">Fecha:</label>
-        <input type="date" id="selectedDate" name="selectedDate">
-    </div>
 
-    <input type="submit" value="Filtrar">
-    <!-- <button type="button" class="btn btn-primary" onclick="generarReporteGraficas()">Generar Reporte</button> -->
-    <button type="button" class="btn btn-primary" onclick="window.print()">Imprimir</button>
-
-</form>
-
-<!-- Gráfico de barras para reservaciones por tipo y fecha de reserva -->
-<canvas id="reservacionesChart" width="300" height="100"></canvas>
 <!-- Grafica de pagados y pendientes -->
 <div id="legendTitle" style="text-align: center; margin-bottom: 10px;">
-    <h3>Pagos liquidados y pendientes</h3>
+    <h2>Pagos liquidados y pendientes</h2>
 </div>
+
+<!-- [$pagadosData, $noPagadosData], -->
+<!-- Formulario fecha -->
+ <h3>Seleccionar año</h3>
+    <form method="post">
+        <label for="selected_year">Selecciona el año:</label>
+        <select name="selected_year" id="selected_year">
+            <?php 
+            // Genera opciones para los años desde 5 años atrás hasta 5 años en el futuro
+            $current_year = date("Y");
+            $start_year = $current_year - 5;
+            $end_year = $current_year + 5;
+            for ($year = $start_year; $year <= $end_year; $year++) {
+                echo "<option value=\"$year\">$year</option>";
+            }
+            ?>
+        </select>
+
+        <input type="submit" value="Consultar">
+    </form>
 
 <canvas id="reservacionesChart2" width="1000" height="400"></canvas>
 <div id="legendContainer" style="display: flex; justify-content: center;">
     <div style="display: flex; align-items: center; margin-right: 20px;">
         <div style="width: 10px; height: 10px; background-color: rgba(0, 128, 0, 0.2);borderColor:rgba(255, 99, 132, 1); margin-right: 5px;"></div>
-        <span>Pagado</span>
+        <span>Pagado:  <?php echo implode(', ', $pagadosData); ?></span>
     </div>
     <div style="display: flex; align-items: center;">
         <div style="width: 10px; height: 10px; background-color: rgba(255, 0, 0, 0.2);borderColor:rgba(75, 192, 192, 1); margin-right: 5px;"></div>
-        <span>No pagado</span>
+        <span>No pagado: <?php echo implode(', ', $noPagadosData); ?></span>
     </div>
 </div>
 
 <br>
 <br>
 <div id="legendTitle" style="text-align: center; margin-bottom: 10px;">
-    <h3>Ganancias</h3>
+    <h2>Ganancias</h2>
 </div>
 
 <canvas id="reservacionesChart3" width="1000" height="400"></canvas>
-
 
 <!-- Scrit para grafica fecha reserva -->
 <script>
@@ -414,7 +412,6 @@ $conn->close();
         });
     }
 
-
     function createChart3(canvasId, chartData) {
     var ctx = document.getElementById(canvasId).getContext('2d');
 
@@ -442,9 +439,8 @@ $conn->close();
 
 
 
-
     // Crear gráfico
-    createChart('reservacionesChart', reservacionesData);
+   
     createChart2('reservacionesChart2', reservacionesData2 );
     createChart3('reservacionesChart3', reservacionesData3);
 
@@ -458,18 +454,12 @@ $conn->close();
             }
         });
     });
+    
 </script>
 
 <!-- Script para fecha creacion -->
-
 
 <!-- ... Resto de tu código JavaScript y HTML ... -->
 
 </body>
 </html>
-<script>
-function generarReporteGraficas() {
-    // Redireccionar a la página PHP que generará el reporte de las gráficas
-    window.location.href = 'generar_reporte_graficas.php';
-}
-</script>

@@ -78,7 +78,7 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item active" href="#">Gráfica de Creaciones</a>
+                        <a class="collapse-item active" href="#">Gráfica de Usuarios</a>
                         <a class="collapse-item" href="../php/admin_graphic2.php">Gráfica de Reservaciones</a>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Gráfica de Creaciones</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Gráfica de Usuarios</h1>
                     <p class="mb-4">Se muestran la cantidad de elementos creados en una modo gráfico.</p>
 
                     <!-- DataTales Example -->
