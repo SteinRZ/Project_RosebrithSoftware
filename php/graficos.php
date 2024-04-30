@@ -353,7 +353,10 @@ $conn->close();
                 scales: {
                     y: {
                         beginAtZero: true,
-                        stacked: true
+                        stacked: true,
+                        ticks:{
+                            stepSize:1
+                        }
                     },
                     x: {
                         stacked: true

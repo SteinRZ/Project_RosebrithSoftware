@@ -144,8 +144,8 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Gráfica de Reservaciones</h1>
-                    <p class="mb-4">Se mostraran todos las reservaciones registradas en modo gráfico.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Gráfica de Ganancias</h1>
+                    <p class="mb-4">Se mostraran todos las ganancias en modo gráfico.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
